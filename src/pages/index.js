@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react"
 import SEO from "../components/utility/SEO"
-import Typography from "@material-ui/core/Typography";
-import MuiLink from "../components/utility/MuiLink";
 import Box from "@material-ui/core/Box";
-import FeedCard from "../components/FeedCard";
 import {getWHONews} from "../actions";
 import {parseString} from "xml2js";
-import Grid from "@material-ui/core/Grid";
+import NewsTop from "../components/NewsTop";
+import NewsFeed from "../components/NewsFeed";
 
 const IndexPage = () => {
   const [feedData, setFeedData] = useState([]);
@@ -40,31 +38,15 @@ const IndexPage = () => {
         })
   };
 
-  const feedCardStyle = {marginRight: 16};
-
   return (
       <>
-        <SEO title="Home"/>
+        <SEO title="Τελευταία νέα"/>
         <Box>
-          <Typography variant='h1'>Hi people</Typography>
-          <Typography variant='h4'>Welcome to your new Gatsby site.</Typography>
-          <Typography variant='body1'>Now go build something great.</Typography>
-          <MuiLink to="/page-2/" variant='body2' color='secondary'>Go to page 2</MuiLink>
-          <Grid container spacing={1}>
-            {feedData && Array.isArray(feedData) && feedData.map((item, ind) => {
-              return (
-                  <Grid item key={ind}>
-                    <FeedCard
-                        style={feedCardStyle}
-                        title={item.title}
-                        description={item.description}
-                        source={"onomapigis.gr"} url={item.link[0]}
-                        image={"https://source.unsplash.com/random"}/>
-                  </Grid>
-              )
-            })}
-
-          </Grid>
+          <NewsTop title={"Titlos"}
+                   description={"Το covid.quintessential.gr αποτελεί ανεξάρτητη ιδιωτική πρωτοβουλία που δημιουργήθηκε για να παρέχει στους πολίτες ολοκληρωμένη και όσο το δυνατόν πιο εμπεριστατωμένη ενημέρωση σχετικά με την εξάπλωση του COVID-19. Δεν αποτελείται από γιατρούς και ειδικούς επιστήμονες, αλλά από επαγγελματίες προγραμματιστές με αίσθημα κοινωνικής ευθύνης που συστήνουν αμέριστη υπακοή στι γνώμη των επιστημόνων υγείας. "}
+                   totalCases={133} dailyCases={5} deaths={1}
+          />
+          <NewsFeed data={feedData}/>
         </Box>
       </>
   )
