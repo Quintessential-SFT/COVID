@@ -16,7 +16,7 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles(theme => ({
   appBar: {
     flexGrow: 1,
-    // backgroundColor: theme.palette.common.white
+    backgroundColor: theme.palette.common.white
   },
   box: {
     flexGrow: 1,
@@ -65,7 +65,7 @@ export default function Header(props) {
 
   return (
       <header {...rest}>
-        <AppBar color={'white'} position='fixed' className={classes.appBar}>
+        <AppBar position='fixed' className={classes.appBar}>
           <Toolbar>
             <Grid container alignItems={"stretch"}>
               <Grid item lg={2} sm={3} xs={4}>

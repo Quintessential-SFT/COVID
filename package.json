@@ -21,7 +21,8 @@
     "prop-types": "^15.7.2",
     "react": "latest",
     "react-dom": "latest",
-    "react-helmet": "latest"
+    "react-helmet": "latest",
+    "xml2js": "^0.4.23"
   },
   "scripts": {
     "develop": "gatsby develop",
