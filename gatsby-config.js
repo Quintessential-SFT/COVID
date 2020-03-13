@@ -1,10 +1,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Material UI Website Starter',
-    description: 'A website starter with Material UI for Gatsby.',
-    author: `Spyros Sellas`,
-    image: `src/images/gatsby-icon.png`,
+    title: 'COVID',
+    description: 'COVID',
+    author: `Quintessential SFT`,
+    image: `src/images/COVID-icon.svg`,
     // siteUrl: 'https://www.example.com',
   },
   plugins: [
@@ -26,19 +26,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Material UI Website Starter`,
-        short_name: `Gatsby Material Starter`,
+        name: `COVID`,
+        short_name: `COVID`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `#2196f3`,
+        theme_color: `#FFC600`,
         display: `standalone`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/COVID-icon.svg`, // This path is relative to the root of the site.
       },
     },
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `#2196f3`,
+        color: `#FFC600`,
         showSpinner: false,
       },
     },

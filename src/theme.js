@@ -1,30 +1,18 @@
 import {createMuiTheme} from '@material-ui/core/styles';
 import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 
-const white = '#fff';
-const black = '#000';
-const primary = '#2196f3';
-const secondary = '#f50057';
-
-const error = '#F00';
+const primary = '#FFC600';
+const secondary = '#000';
 
 const theme = createMuiTheme({
   palette: {
-    white,
-    black,
     primary: {
       main: primary,
-      contrastText: white,
+      contrastText: '#000',
     },
     secondary: {
       main: secondary,
-      contrastText: white,
-    },
-    error: {
-      main: error,
-    },
-    background: {
-      default: white,
+      contrastText: '#FFF',
     },
   },
   typography: {
