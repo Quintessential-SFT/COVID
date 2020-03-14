@@ -6,6 +6,7 @@ import xml2js from "xml2js";
 import NewsTop from "../components/NewsTop";
 import NewsFeed from "../components/NewsFeed";
 import {makeStyles} from "@material-ui/core/styles";
+import NewsFrontPage from "../components/NewsFrontPage";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +37,7 @@ const IndexPage = () => {
         })
         .catch((e) => {
           console.log(e);
-          setError(`Feed data fetch failed`);
+          setError(`WHO News data fetch failed`);
           setLoading(false);
         })
   };

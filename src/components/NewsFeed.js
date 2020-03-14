@@ -6,7 +6,8 @@ import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.grey[100]
+    backgroundColor: theme.palette.grey[100],
+    overflow: 'hidden'
   },
   gridContainer: {
     marginTop: 0,

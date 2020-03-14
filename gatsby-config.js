@@ -3,8 +3,8 @@ module.exports = {
     title: 'COVID',
     description: 'COVID',
     author: `Quintessential SFT`,
-    image: `src/images/COVID-icon.svg`,
-    // siteUrl: 'https://www.example.com',
+    image: `src/images/COVID-cover-image.png`,
+    siteUrl: 'https://covid.quintessential.gr/',
   },
   plugins: [
     'gatsby-plugin-top-layout',

@@ -65,7 +65,7 @@ const Layout = ({children, uri}) => {
         <Header tabs={headerTabs} contact={headerContact}
                 selected={selected} setSelected={setSelected}
                 onContactClick={() => setContactDrawerOpen(true)}/>
-        <main style={{minHeight: '100vh'}}>
+        <main style={{minHeight: '100vh', width: '100vw', overflowY: 'hidden'}}>
           <div style={{height: headerHeight, width: '100%'}}/>
           <Box display='flex' flexDirection='column'>
             {children}

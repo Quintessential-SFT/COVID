@@ -9,6 +9,9 @@ const useStyles = makeStyles(theme => ({
     minHeight: theme.spacing(16),
     backgroundColor: theme.palette.common.white
   },
+  image: {
+    maxWidth: '100%'
+  }
 }));
 
 export default function Footer(props) {
@@ -21,7 +24,7 @@ export default function Footer(props) {
         <Box p={3} display='flex' justifyContent="center" alignItems="center" className={classes.root}>
           <Link href='https://quintessential.gr' variant="body1" color='inherit'
                 target="_blank" rel="noopener">
-            <img src={FooterImage} alt={'COVID-footer-image'}/>
+            <img src={FooterImage} alt={'COVID-footer-image'} className={classes.image}/>
           </Link>
         </Box>
       </footer>
