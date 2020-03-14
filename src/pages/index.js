@@ -48,7 +48,7 @@ const IndexPage = (props) => {
                    description={"Το covid.quintessential.gr αποτελεί ανεξάρτητη ιδιωτική πρωτοβουλία που δημιουργήθηκε για να παρέχει στους πολίτες ολοκληρωμένη και όσο το δυνατόν πιο εμπεριστατωμένη ενημέρωση σχετικά με την εξάπλωση του COVID-19. Δεν αποτελείται από γιατρούς και ειδικούς επιστήμονες, αλλά από επαγγελματίες προγραμματιστές με αίσθημα κοινωνικής ευθύνης που συστήνουν αμέριστη υπακοή στι γνώμη των επιστημόνων υγείας. "}
                    totalCases={covidData ? covidData.Confirmed: null} recoveredCases={covidData ? covidData.Recovered: null} deaths={covidData ? covidData.Deaths: null}
           />
-          <NewsFeed data={props.feed.WHORssItems} loading={props.feed && props.feed.WHORssItems && props.feed.WHORssItems.length === 0}/>
+          <NewsFeed data={props.feed.WHORssItems} loading={props.feed.loading}/>
         </Box>
       </>
   )

@@ -1,7 +1,9 @@
-import { ADD_WHO_RSS_ITEMS, ADD_WHO_RSS_ITEM } from '../actionTypes';
+import { ADD_WHO_RSS_ITEMS, ADD_WHO_RSS_ITEM, SET_FEED_ERROR, START_FEED_LOADING, STOP_FEED_LOADING } from '../actionTypes';
 
 const initialState = {
-  WHORssItems: []
+  WHORssItems: [],
+  error: false,
+  loading: false
 }
 
 
@@ -19,6 +21,24 @@ export default function(state = initialState, action) {
       return {
         ...state,
         WHORssItems: [...state.WHORssItems, action.payload]
+      }
+    }
+    case SET_FEED_ERROR: {
+      return {
+        ...state,
+        error: action.payload.error
+      }
+    }
+    case START_FEED_LOADING: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+    case STOP_FEED_LOADING: {
+      return { 
+        ...state,
+        loading: false
       }
     }
     default: {

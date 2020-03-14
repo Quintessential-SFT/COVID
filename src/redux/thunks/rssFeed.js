@@ -1,9 +1,10 @@
 import { getWHONews } from '../../requests';
-import { addRssItems } from '../actions';
+import { addRssItems, startFeedLoading, stopFeedLoading, setFeedError } from '../actions';
 import xml2js from 'xml2js';
 
 export function getWHOData() {
   return dispatch => {
+    dispatch(startFeedLoading());
     getWHONews()
       .then(res => {
         const data = res.data;
@@ -11,10 +12,12 @@ export function getWHOData() {
       })
       .then(res => {
         const data = res.rss.channel[0].item;
+        dispatch(stopFeedLoading());
         dispatch(addRssItems(data));
       })
       .catch(error => {
-        // TODO handle this error with redux
-      })
+        dispatch(setFeedError(error));
+        dispatch(stopFeedLoading());
+      });
   }
 }
