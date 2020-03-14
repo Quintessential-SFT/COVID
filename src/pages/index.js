@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import SEO from "../components/utility/SEO"
 import Box from "@material-ui/core/Box";
-import {getGreekCOVIDData, getWHONews} from "../requests";
 import NewsTop from "../components/NewsTop";
 import NewsFeed from "../components/NewsFeed";
 import {makeStyles} from "@material-ui/core/styles";
-import { connect, Provider } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getWHOData } from '../redux/thunks';
 import { getGreekCovidData } from '../redux/thunks/greekCovidData';
 
@@ -16,13 +15,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const IndexPage = (props) => {
-  const { feed, greekCovidData } = props;
+  const feed = useSelector(state => state.feed);
+  const greekCovidData = useSelector(state => state.greekCovidData);
   const { data: covidData } = greekCovidData;
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    props.dispatch(getGreekCovidData());
-    props.dispatch(getWHOData());
+    dispatch(getGreekCovidData());
+    dispatch(getWHOData());
   }, []);
 
   return (
@@ -47,4 +48,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(IndexPage);
+export default IndexPage;
