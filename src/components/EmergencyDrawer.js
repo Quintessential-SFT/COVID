@@ -11,7 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    maxWidth: 'min(620px, 90vw)',
+    width: 'min(620px, 90vw)',
     height: '100%',
   },
   purpleColor: {

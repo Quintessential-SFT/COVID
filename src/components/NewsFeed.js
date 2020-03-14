@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import FeedCard from "./FeedCard";
 import Container from "@material-ui/core/Container";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NewsFeed(props) {
-  const {data, ...rest} = props;
+  const {data, loading = false, ...rest} = props;
 
   const classes = useStyles();
 
@@ -38,6 +39,11 @@ export default function NewsFeed(props) {
                 </Grid>
             )
           })}
+          {loading &&
+          <Grid item xs={12} container justify={'center'}>
+            <CircularProgress />
+          </Grid>
+          }
         </Grid>
       </Container>
   );

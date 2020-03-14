@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import FeedCard from "./FeedCard";
 import clsx from "clsx";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NewsFrontPage(props) {
-  const {title, data, color = 'primary', variant = false, ...rest} = props;
+  const {title, data, loading = false, color = 'primary', variant = false, ...rest} = props;
 
   const classes = useStyles();
 
@@ -83,6 +84,11 @@ export default function NewsFrontPage(props) {
                     </Grid>
                 )
               })}
+              {loading &&
+                    <Grid item xs={12} container justify={'center'}>
+                      <CircularProgress color={color} />
+                    </Grid>
+              }
             </Grid>
           </Box>
         </Container>

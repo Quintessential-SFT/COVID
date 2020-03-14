@@ -27,12 +27,13 @@ const GovernmentPage = () => {
           return xml2js.parseStringPromise(data);
         })
         .then((result) => {
+          setLoading(false);
           setFeedData(result.rss.channel[0].item);
         })
         .catch((e) => {
+          setLoading(false);
           console.log(e);
           setError(`WHO News data fetch failed`);
-          setLoading(false);
         })
   };
 
@@ -45,8 +46,8 @@ const GovernmentPage = () => {
               description={"Εδώ εμφανίζονται τελευταία νέα, ανακοινώσεις και δημοσιεύσεις από το Υπουργείο Υγείας και τους αρμόδιους κυβερνητικούς φορείς καθώς και χρήσιμες συμβουλές για το πως να προφυλαχθείτε από τον COVID 19"}
               image={StayHome}
           />
-          <NewsFrontPage title={"Τελευταίες ανακοινώσεις υπουργείου υγείας"} data={feedData} variant/>
-          <NewsFrontPage title={"Υπουργικές αποφάσεις"} data={feedData}/>
+          <NewsFrontPage title={"Τελευταίες ανακοινώσεις υπουργείου υγείας"} data={feedData} loading={loading} variant/>
+          <NewsFrontPage title={"Υπουργικές αποφάσεις"} data={feedData} loading={loading}/>
           <VideoSection title={"Πως να προστατευτείτε από τον ιό"}
                         embedUrl={"https://www.youtube.com/embed/1APwq1df6Mw"}/>
           <VideoSection variant title={"Πως να προστατευτείτε από τον ιό"}
