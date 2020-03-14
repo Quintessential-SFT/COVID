@@ -66,7 +66,7 @@ const Layout = ({children, uri}) => {
                 onContactClick={() => setContactDrawerOpen(true)}/>
         <main style={{minHeight: '100vh'}}>
           <div style={{height: headerHeight, width: '100%'}}/>
-          <Box px={6} display='flex' flexDirection='column'>
+          <Box display='flex' flexDirection='column'>
             {children}
           </Box>
         </main>

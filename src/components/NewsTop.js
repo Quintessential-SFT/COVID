@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,48 +40,50 @@ export default function NewsTop(props) {
   const classes = useStyles();
 
   return (
-      <Grid container alignItems={"center"} className={classes.root} {...rest}>
-        <Grid item md={6} xs={12} className={classes.container}>
-          <Box p={2}>
-            <Typography gutterBottom variant="h4" component="h2">
-              {title}
-            </Typography>
-            <Typography variant="body1" color="textSecondary" component="p">
-              {description}
-            </Typography>
-          </Box>
+      <Container maxWidth={"lg"} className={classes.root} {...rest}>
+        <Grid container alignItems={"center"}>
+          <Grid item md={6} xs={12} className={classes.container}>
+            <Box p={2}>
+              <Typography gutterBottom variant="h4" component="h2">
+                {title}
+              </Typography>
+              <Typography variant="body1" color="textSecondary" component="p">
+                {description}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <Box p={2}>
+              <Paper className={classes.paper}>
+                <Grid container spacing={1}>
+                  <Grid item xs={12} container alignItems={"center"} className={classes.titleContainer}>
+                    <Box className={classes.dot}/>
+                    <Typography variant={"body1"}>Live στατιστικά:</Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
+                      <Typography variant={"body2"}>Σύνολο κρουσμάτων</Typography>
+                      <Typography variant={"h6"}>{totalCases ? totalCases : '-'}</Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
+                      <Typography variant={"body2"}>Τελευταίες 24 ώρες</Typography>
+                      <Typography variant={"h6"}>{dailyCases ? dailyCases : '-'}</Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
+                      <Typography variant={"body2"}>Θάνατοι</Typography>
+                      <Typography variant={"h6"}>{deaths ? deaths : "-"}</Typography>
+                    </Box>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item md={6} xs={12}>
-          <Box p={2}>
-            <Paper className={classes.paper}>
-              <Grid container spacing={1}>
-                <Grid item xs={12} container alignItems={"center"} className={classes.titleContainer}>
-                  <Box className={classes.dot}/>
-                  <Typography variant={"body1"}>Live στατιστικά:</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                    <Typography variant={"body2"}>Σύνολο κρουσμάτων</Typography>
-                    <Typography variant={"h6"}>{totalCases ? totalCases : '-'}</Typography>
-                  </Box>
-                </Grid>
-                <Grid item xs={6}>
-                  <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                    <Typography variant={"body2"}>Τελευταίες 24 ώρες</Typography>
-                    <Typography variant={"h6"}>{dailyCases ? dailyCases : '-'}</Typography>
-                  </Box>
-                </Grid>
-                <Grid item xs={6}>
-                  <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                    <Typography variant={"body2"}>Θάνατοι</Typography>
-                    <Typography variant={"h6"}>{deaths ? deaths : "-"}</Typography>
-                  </Box>
-                </Grid>
-              </Grid>
-            </Paper>
-          </Box>
-        </Grid>
-      </Grid>
+      </Container>
   );
 }
 
