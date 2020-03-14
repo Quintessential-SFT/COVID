@@ -43,6 +43,10 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'none',
     fontSize: 12
   },
+  icon: {
+    height: 45,
+    width: 45
+  }
 }));
 
 export default function Header(props) {
@@ -70,7 +74,7 @@ export default function Header(props) {
             <Grid container alignItems={"stretch"}>
               <Grid item lg={2} sm={3} xs={4}>
                 <MuiLink to={'/'} className={classes.iconContainer}>
-                  <IconButton><img src={COVIDIcon} alt={'COVID-icon'}/></IconButton>
+                  <IconButton><img src={COVIDIcon} alt={'COVID-icon'} className={classes.icon}/></IconButton>
                 </MuiLink>
               </Grid>
               <Grid item lg={8} sm={6} xs={4} container justify={"center"}>
