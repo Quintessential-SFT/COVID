@@ -68,7 +68,7 @@ export default function NewsTop(props) {
                   </Grid>
                   <Grid item xs={6}>
                     <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography variant={"body2"}>Θεραπεύτηκαν</Typography>
+                      <Typography variant={"body2"}>Αναρρώσεις</Typography>
                       <Typography variant={"h6"}>{recoveredCases ? recoveredCases : '-'}</Typography>
                     </Box>
                   </Grid>
