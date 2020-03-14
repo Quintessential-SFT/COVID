@@ -100,7 +100,7 @@ export default function Header(props) {
               </Grid>
               <Grid item container lg={2} sm={3} xs={4} justify={"flex-end"} alignItems={"center"}>
                 {contact &&
-                <Button variant='contained' size="small" color={"secondary"} className={classes.contactButton} onClick={onContactClick}>{contact}</Button>
+                <Button variant='contained' color={"secondary"} className={classes.contactButton} onClick={onContactClick}>{contact}</Button>
                 }
               </Grid>
             </Grid>

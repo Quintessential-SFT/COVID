@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import SEO from "../components/utility/SEO"
 import Box from "@material-ui/core/Box";
 import {getWHONews} from "../actions";
-import {parseString} from "xml2js";
+import xml2js from "xml2js";
 import NewsTop from "../components/NewsTop";
 import NewsFeed from "../components/NewsFeed";
 
@@ -20,16 +20,10 @@ const IndexPage = () => {
     getWHONews()
         .then(res => {
           const data = res.data;
-          parseString(data, function (err, result) {
-            setLoading(false);
-            if (err) {
-              setError(err);
-              setFeedData([]);
-            } else {
-              setError('');
-              setFeedData(result.rss.channel[0].item);
-            }
-          });
+          return xml2js.parseStringPromise(data);
+        })
+        .then((result) => {
+          setFeedData(result.rss.channel[0].item);
         })
         .catch((e) => {
           console.log(e);

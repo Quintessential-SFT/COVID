@@ -28,9 +28,11 @@ export default function Hero(props) {
             <Typography gutterBottom variant="h4" component="h2">
               {title}
             </Typography>
-            <Typography variant="body1" color="textSecondary" component="p">
-              {description}
-            </Typography>
+            {description && description.split('\n').flatMap((paragraph, ind) => (
+                <Typography key={ind} paragraph variant="body1" color="textSecondary" component="p">
+                  {paragraph}
+                </Typography>
+            ))}
           </Box>
         </Grid>
         <Grid item md={6} xs={12} container justify={"flex-end"}>
