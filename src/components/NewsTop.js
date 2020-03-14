@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1)
   },
   borderBox: {
+    height: '100%',
     border: '1px solid rgba(0, 0, 0, 0.87)',
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),

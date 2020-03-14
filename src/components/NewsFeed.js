@@ -10,8 +10,11 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden'
   },
   gridContainer: {
-    marginTop: 0,
-    marginBottom: 0,
+    margin: 0,
+    width: '100%',
+  },
+  gridItem: {
+    maxWidth: '100%'
   }
 }));
 
@@ -25,7 +28,7 @@ export default function NewsFeed(props) {
         <Grid container spacing={8} className={classes.gridContainer}>
           {data && Array.isArray(data) && data.map((item, ind) => {
             return (
-                <Grid item key={ind}>
+                <Grid key={ind} item className={classes.gridItem}>
                   <FeedCard
                       title={item.title}
                       description={item.description}

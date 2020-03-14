@@ -8,11 +8,10 @@ import ModalImage from "../images/COVID-modal.svg"
 import Grid from "@material-ui/core/Grid";
 import {Close} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
-import clsx from "clsx";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    maxWidth: 620,
+    maxWidth: 'min(620px, 90vw)',
     height: '100%',
   },
   purpleColor: {
@@ -24,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   marginBottomSmall: {
     marginBottom: theme.spacing(1),
   },
+  image: {
+    maxWidth: '100%'
+  }
 }));
 
 export default function EmergencyDrawer(props) {
@@ -61,7 +63,7 @@ export default function EmergencyDrawer(props) {
                 <img src={Num1135} alt={'COVID-1135'}/>
               </Box>
               <Box className={classes.marginBottom}>
-                <img src={ModalImage} alt={'COVID-modal'}/>
+                <img src={ModalImage} alt={'COVID-modal'} className={classes.image}/>
               </Box>
             </Box>
           </Grid>
