@@ -10,14 +10,24 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case ADD_WHO_RSS_ITEMS: {
-      if (!action.payload) return;
+      if (!action.payload) return state;
+      const oldItems = state.WHORssItems;
+      const newItems = Array.isArray(action.payload) && action.payload.filter(item => {
+        const exists = oldItems.find(oldItem => item.id === oldItem.id);
+        return !exists;
+      })
       return {
         ...state,
-        WHORssItems: [...state.WHORssItems, ...action.payload]
+        WHORssItems: [...state.WHORssItems, ...newItems]
       }
     }
     case ADD_WHO_RSS_ITEM: {
-      if (!action.payload) return;
+      if (!action.payload) return state;
+      const oldItems = [...state.WHORssItems];
+      const exists = oldItems.find(item => item.id === action.payload.id);
+      if (exists) {
+        return state;
+      }
       return {
         ...state,
         WHORssItems: [...state.WHORssItems, action.payload]
