@@ -16,6 +16,7 @@
     "gatsby-plugin-netlify": "^2.1.34",
     "gatsby-plugin-nprogress": "^2.1.19",
     "gatsby-plugin-react-helmet": "latest",
+    "gatsby-plugin-react-redux": "^1.1.0-0",
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.3.13",
@@ -24,6 +25,9 @@
     "react": "latest",
     "react-dom": "latest",
     "react-helmet": "latest",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "xml2js": "^0.4.23"
   },
   "scripts": {

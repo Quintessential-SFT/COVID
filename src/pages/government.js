@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Hero from "../components/Hero";
 import StayHome from "../images/COVID-stay-home.png"
 import NewsFrontPage from "../components/NewsFrontPage";
-import {getWHONews} from "../actions";
+import {getWHONews} from "../requests";
 import xml2js from "xml2js";
 import VideoSection from "../components/VideoSection";
 

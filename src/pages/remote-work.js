@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Remote from "../images/COVID-remotework.svg";
 import Hero from "../components/Hero";
 import NewsFrontPage from "../components/NewsFrontPage";
-import {getWHONews} from "../actions";
+import {getWHONews} from "../requests";
 import xml2js from "xml2js";
 
 const SecondPage = () => {

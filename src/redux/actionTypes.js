@@ -1,0 +1,2 @@
+export const ADD_WHO_RSS_ITEMS = 'ADD_WHO_RSS_ITEMS';
+export const ADD_WHO_RSS_ITEM = 'ADD_WHO_RSS_ITEM';
