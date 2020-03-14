@@ -20,7 +20,7 @@ const headerContact = 'Κουμπί έκτακτης ανάγκης';
 
 const Layout = ({children, uri}) => {
 
-  const pageTab = (uri) => {
+  const pageTab = () => {
     if (uri) {
       const splitUri = uri.split('/');
       const page = splitUri[splitUri.length - 1];

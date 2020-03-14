@@ -24,30 +24,44 @@ const theme = createMuiTheme({
   typography: {
     h1: {
       fontFamily: 'Roboto, sans-serif',
+      fontWeight: 700,
     },
     h2: {
       fontFamily: 'Roboto, sans-serif',
+      fontWeight: 700,
     },
     h3: {
       fontFamily: 'Roboto, sans-serif',
+      fontWeight: 500,
     },
     h4: {
       fontFamily: 'Roboto, sans-serif',
+      fontWeight: 500,
     },
     h5: {
       fontFamily: 'Roboto, sans-serif',
+      fontWeight: 400,
+    },
+    h6: {
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 400,
     },
     body1: {
-      fontFamily: 'Lato, sans-serif',
+      fontFamily: 'Open Sans, sans-serif',
+      fontWeight: 400,
     },
     body2: {
-      fontFamily: 'Lato, sans-serif',
+      fontFamily: 'Open Sans, sans-serif',
+      fontWeight: 300,
     },
     subtitle1: {
-      fontFamily: 'Lato, sans-serif',
+      fontFamily: 'Open Sans, sans-serif',
     },
     subtitle2: {
-      fontFamily: 'Lato, sans-serif',
+      fontFamily: 'Open Sans, sans-serif',
+    },
+    button : {
+      fontFamily: 'Open Sans, sans-serif',
     }
   }
 });

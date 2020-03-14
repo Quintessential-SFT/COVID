@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Fact(props) {
-  const {myth, fact, description, image, secondary = false, ...rest} = props;
+  const {myth, fact, description, image, variant = false, ...rest} = props;
 
   const classes = useStyles();
 
@@ -91,15 +91,15 @@ export default function Fact(props) {
 
   return (
       <Box
-          className={secondary ? clsx(classes.root, classes.rootSecondary) : clsx(classes.root, classes.rootPrimary)} {...rest}>
+          className={variant ? clsx(classes.root, classes.rootSecondary) : clsx(classes.root, classes.rootPrimary)} {...rest}>
         <Container maxWidth={"lg"}>
-          <Grid container alignItems={"center"} direction={secondary ? 'row-reverse' : 'row'}>
-            <Grid item md={6} xs={12} container justify={secondary ? "flex-end" : "flex-start"}>
+          <Grid container alignItems={"center"} direction={variant ? 'row-reverse' : 'row'}>
+            <Grid item md={6} xs={12} container justify={variant ? "flex-end" : "flex-start"}>
               <Box p={2}>
                 <img src={image} alt={''} className={classes.image}/>
               </Box>
             </Grid>
-            <Grid item md={6} xs={12} container justify={secondary ? "flex-start" : "flex-end"}>
+            <Grid item md={6} xs={12} container justify={variant ? "flex-start" : "flex-end"}>
               <Box p={2} className={classes.container}>
                 {mythTypography()}
                 {description && description.split('\n').flatMap((paragraph, ind) => (
