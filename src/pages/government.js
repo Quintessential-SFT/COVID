@@ -2,8 +2,7 @@ import React from "react"
 import SEO from "../components/utility/SEO"
 import Box from "@material-ui/core/Box";
 import Hero from "../components/Hero";
-
-import tempImage from "../images/Group 1249.svg"
+import Government from "../images/COVID-government.svg"
 
 const GovernmentPage = () => (
   <>
@@ -12,7 +11,7 @@ const GovernmentPage = () => (
       <Hero
           title={"Δημοσιεύσεις Υπουργείου υγείας, κυβερνητικές αποφάσεις, μέτρα προφύλαξης"}
           description={"Εδώ εμφανίζονται τελευταία νέα, ανακοινώσεις και δημοσιεύσεις από το Υπουργείο Υγείας και τους αρμόδιους κυβερνητικούς φορείς καθώς και χρήσιμες συμβουλές για το πως να προφυλαχθείτε από τον COVID 19"}
-          image={tempImage}
+          image={Government}
       />
     </Box>
   </>

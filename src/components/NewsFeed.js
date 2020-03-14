@@ -18,7 +18,7 @@ export default function NewsFeed(props) {
   const classes = useStyles();
 
   return (
-      <Grid className={classes.root} container spacing={4} {...rest}>
+      <Grid className={classes.root} container spacing={8} {...rest}>
         {data && Array.isArray(data) && data.map((item, ind) => {
           return (
               <Grid item key={ind}>
@@ -30,7 +30,6 @@ export default function NewsFeed(props) {
               </Grid>
           )
         })}
-
       </Grid>
   );
 }

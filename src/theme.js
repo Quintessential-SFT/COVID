@@ -3,9 +3,12 @@ import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 
 const primary = '#FFC600';
 const secondary = '#000';
+const purple = '#6C63FF';
+
 
 const theme = createMuiTheme({
   palette: {
+    purple,
     primary: {
       main: primary,
       contrastText: '#000',

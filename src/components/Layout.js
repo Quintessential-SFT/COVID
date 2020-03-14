@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Header from "./Header";
 import Footer from "./Footer";
 import ErrorBoundary from "./utility/ErrorBoundary";
-import ContactUsDrawer from "./ContactUsDrawer";
+import EmergencyDrawer from "./EmergencyDrawer";
 import {Box} from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import {ArrowUpward} from "@material-ui/icons";
@@ -71,7 +71,7 @@ const Layout = ({children, uri}) => {
           </Box>
         </main>
         <Footer/>
-        <ContactUsDrawer
+        <EmergencyDrawer
             open={contactDrawerOpen}
             handleClose={() => setContactDrawerOpen(false)}
             handleOpen={() => setContactDrawerOpen(false)}/>
