@@ -6,7 +6,6 @@ import NewsTop from "../components/NewsTop";
 import NewsFeed from "../components/NewsFeed";
 import {makeStyles} from "@material-ui/core/styles";
 import { connect, Provider } from 'react-redux';
-import { addRssItem, addRssItems } from '../redux/actions';
 import { getWHOData } from '../redux/thunks';
 
 const useStyles = makeStyles(theme => ({
@@ -61,12 +60,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addRssItem,
-    addRssItems,
-    dispatch
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);
+export default connect(mapStateToProps)(IndexPage);
