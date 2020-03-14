@@ -40,12 +40,4 @@ const IndexPage = (props) => {
   )
 };
 
-const mapStateToProps = state => {
-  const { feed, greekCovidData } = state;
-  return {
-    feed,
-    greekCovidData
-  }
-}
-
 export default IndexPage;
