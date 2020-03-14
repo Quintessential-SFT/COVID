@@ -7,6 +7,7 @@ import NewsFrontPage from "../components/NewsFrontPage";
 import {getWHONews} from "../actions";
 import xml2js from "xml2js";
 import VideoSection from "../components/VideoSection";
+import Instructions from "../components/Instructions";
 
 
 const GovernmentPage = () => {
@@ -52,6 +53,9 @@ const GovernmentPage = () => {
                         embedUrl={"https://www.youtube.com/embed/1APwq1df6Mw"}/>
           <VideoSection variant title={"Πως να προστατευτείτε από τον ιό"}
                         embedUrl={"https://www.youtube.com/embed/1APwq1df6Mw"}/>
+          <Instructions title={"Γενικές οδηγίες πρόληψης και δράσεις σε περίπτωση ύποπτων συμπτωμάτων"}
+          description={"Εδώ εμφανίζονται τελευταία νέα, ανακοινώσεις και δημοσιεύσεις από το Υπουργείο Υγείας και τους αρμόδιους κυβερνητικούς φορείς καθώς και χρήσιμες συμβουλές για το πως να προφυλαχθείτε από τον COVID 19"}
+          source={"Κυβέρνηση της Σλοβενίας: www.gov.si"}/>
         </Box>
       </>
   )
