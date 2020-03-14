@@ -1,11 +1,9 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import {headerHeight} from "./Layout";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import FeedCard from "./FeedCard";
 import clsx from "clsx";
 import Video from "./Video";
 
@@ -74,7 +72,7 @@ export default function VideoSection(props) {
           }
           {embedUrl &&
           <Box p={4} display={"flex"} alignItems={"center"} justifyContent={'center'} flex={1} width={'100%'}>
-            <Video videoSrcURL={embedUrl}/>
+            <Video videoSrcURL={embedUrl} videoTitle={title}/>
           </Box>
           }
         </Container>

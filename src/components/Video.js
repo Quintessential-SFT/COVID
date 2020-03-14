@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Video = ({ videoSrcURL, ...rest }) => {
+const Video = ({ videoSrcURL, videoTitle, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -26,6 +26,7 @@ const Video = ({ videoSrcURL, ...rest }) => {
         <iframe
             className={classes.iframe}
             src={videoSrcURL}
+            title={videoTitle}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             frameBorder="0"
             webkitallowfullscreen="true"

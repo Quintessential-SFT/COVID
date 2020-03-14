@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NewsTop(props) {
-  const {title, description, totalCases, dailyCases, deaths, ...rest} = props;
+  const {title, description, totalCases, recoveredCases, deaths, ...rest} = props;
 
   const classes = useStyles();
 
@@ -68,8 +68,8 @@ export default function NewsTop(props) {
                   </Grid>
                   <Grid item xs={6}>
                     <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography variant={"body2"}>Τελευταίες 24 ώρες</Typography>
-                      <Typography variant={"h6"}>{dailyCases ? dailyCases : '-'}</Typography>
+                      <Typography variant={"body2"}>Θεραπεύτηκαν</Typography>
+                      <Typography variant={"h6"}>{recoveredCases ? recoveredCases : '-'}</Typography>
                     </Box>
                   </Grid>
                   <Grid item xs={6}>
