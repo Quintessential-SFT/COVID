@@ -19,14 +19,8 @@ const headerTabs = [
 const headerContact = 'Κουμπί έκτακτης ανάγκης';
 
 const Layout = ({children, uri}) => {
-  const [contactDrawerOpen, setContactDrawerOpen] = useState(false);
-  const [selected, setSelected] = useState(pageTab);
 
-  useEffect(() => {
-    setSelected(pageTab);
-  }, [uri]);
-
-  const pageTab = () => {
+  const pageTab = (uri) => {
     if (uri) {
       const splitUri = uri.split('/');
       const page = splitUri[splitUri.length - 1];
@@ -45,6 +39,13 @@ const Layout = ({children, uri}) => {
     }
     return 0;
   };
+
+  const [contactDrawerOpen, setContactDrawerOpen] = useState(false);
+  const [selected, setSelected] = useState(pageTab);
+
+  useEffect(() => {
+    setSelected(pageTab);
+  }, [uri]);
 
   const fabStyle = {
     margin: 0,
