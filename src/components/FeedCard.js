@@ -8,11 +8,12 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import MuiLink from "./utility/MuiLink";
-import Box from "@material-ui/core/Box";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 354,
+    borderRadius: 0
   },
   media: {
     height: 135,
@@ -31,7 +32,12 @@ const useStyles = makeStyles(theme => ({
     left: 0,
   },
   cardActions: {
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
+  },
+  button: {
+    borderRadius: 0
   }
 }));
 
@@ -44,11 +50,13 @@ export default function FeedCard(props) {
       <Card className={classes.root} {...rest}>
         <MuiLink url={url} underline={'none'}>
           <CardActionArea>
+            {image &&
             <CardMedia
                 className={classes.media}
                 image={image}
                 title={title}
             />
+            }
             <CardContent className={classes.content}>
               <Typography gutterBottom variant="h5" component="h2">
                 {title}
@@ -56,8 +64,8 @@ export default function FeedCard(props) {
               <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
                 {description}
               </Typography>
-              <Box className={classes.fade}/>
             </CardContent>
+            <Divider/>
           </CardActionArea>
         </MuiLink>
         <CardActions className={classes.cardActions}>
@@ -65,7 +73,7 @@ export default function FeedCard(props) {
             {source}
           </Typography>
           <MuiLink url={url} underline={'none'}>
-            <Button variant={'outlined'} size="small" color="secondary">
+            <Button className={classes.button} variant={'outlined'} size="small" color="secondary">
               Διαβασε περισσοτερα
             </Button>
           </MuiLink>

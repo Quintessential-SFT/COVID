@@ -6,8 +6,6 @@ import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: theme.spacing(10),
-    paddingBottom: theme.spacing(10),
     backgroundColor: theme.palette.grey[100]
   },
   gridContainer: {
@@ -31,7 +29,8 @@ export default function NewsFeed(props) {
                       title={item.title}
                       description={item.description}
                       source={"onomapigis.gr"} url={item.link[0]}
-                      image={"https://source.unsplash.com/random"}/>
+                      // image={"https://source.unsplash.com/random"}
+                  />
                 </Grid>
             )
           })}

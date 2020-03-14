@@ -1,4 +1,3 @@
-
 module.exports = {
   siteMetadata: {
     title: 'COVID',
@@ -42,5 +41,22 @@ module.exports = {
         showSpinner: false,
       },
     },
+    // {
+    //   resolve: 'gatsby-source-prismic',
+    //   options: {
+    //     repositoryName: 'covid',
+    //     accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+    //     lang: '*',
+    //     schemas: {
+    //       // home_page: require('./src/schemas/homePage'),
+    //       // our_clients_page: require('./src/schemas/ourClientsPage'),
+    //       // our_partners_page: require('./src/schemas/ourPartnersPage'),
+    //       // the_process_page: require('./src/schemas/theProcessPage'),
+    //       // faq_page: require('./src/schemas/faqPage'),
+    //       // footer: require('./src/schemas/footer'),
+    //     }
+    //   },
+    // },
+    `gatsby-plugin-netlify`,
   ],
 };

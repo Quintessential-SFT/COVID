@@ -46,22 +46,22 @@ export default function EmergencyDrawer(props) {
             <Box display='flex' flexDirection='column' justifyContent='space-between' alignItems='stretch'
                  p={4} role="presentation" id='contact-drawer-presentation' flex={1} height={"100%"}>
               <Box className={classes.marginBottom}>
-                <Typography variant={'h4'} className={clsx(classes.purpleColor, classes.marginBottomSmall)}>
+                <Typography paragraph variant={'h4'} className={classes.purpleColor}>
                   Έκτακτη ανάγκη;
                 </Typography>
-                <Typography variant={'h6'} className={classes.marginBottomSmall}>Ψυχραιμία! Δες μπορείς να κάνεις.</Typography>
+                <Typography variant={'h6'}>Ψυχραιμία! Δες μπορείς να κάνεις.</Typography>
               </Box>
               <Box className={classes.marginBottom}>
-                <Typography variant={'body2'} className={classes.marginBottomSmall}>
+                <Typography variant={'body2'} paragraph>
                   Χρειάζεσαι περαιτέρω ενημέρωση ή εμφανίζεις κάποιο σύμπτωμα; Τηλεφώνησε στον ΕΟΔΥ
                 </Typography>
-                <Typography variant={'body1'} className={clsx(classes.purpleColor,classes.marginBottomSmall)}>
+                <Typography variant={'body1'} className={classes.purpleColor} paragraph>
                   ΤΗΛΕΦΩΝΟ ΕΘΝΙΚΟΥ ΟΡΓΑΝΙΣΜΟΥ ΔΗΜΟΣΙΑΣ ΥΓΕΙΑΣ
                 </Typography>
-                <img className={classes.marginBottomSmall} src={Num1135} alt={'COVID-1135'}/>
+                <img src={Num1135} alt={'COVID-1135'}/>
               </Box>
               <Box className={classes.marginBottom}>
-                <img className={classes.marginBottomSmall} src={ModalImage} alt={'COVID-modal'}/>
+                <img src={ModalImage} alt={'COVID-modal'}/>
               </Box>
             </Box>
           </Grid>

@@ -30,7 +30,6 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(2),
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
-    marginBottom: theme.spacing(2)
   }
 }));
 
@@ -55,7 +54,7 @@ export default function NewsTop(props) {
           <Grid item md={6} xs={12}>
             <Box p={2}>
               <Paper className={classes.paper}>
-                <Grid container spacing={1}>
+                <Grid container spacing={2}>
                   <Grid item xs={12} container alignItems={"center"} className={classes.titleContainer}>
                     <Box className={classes.dot}/>
                     <Typography variant={"body1"}>Live στατιστικά:</Typography>
