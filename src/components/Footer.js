@@ -8,7 +8,7 @@ import MuiLink from "./utility/MuiLink";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minHeight: theme.spacing(16),
+    minHeight: theme.spacing(28),
     backgroundColor: theme.palette.common.white,
     position: 'relative'
   },
