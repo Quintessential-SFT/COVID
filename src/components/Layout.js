@@ -7,16 +7,17 @@ import EmergencyDrawer from "./EmergencyDrawer";
 import {Box} from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import {ArrowUpward} from "@material-ui/icons";
+import MobileMenuDrawer from "./MenuDrawer";
 
 export const headerHeight = 71;
 
 const headerTabs = [
   {uri: '/', tab: 'Τελευταία νέα'},
-  {uri: '/government', tab: 'Κυρβενητικές αποφάσεις'},
+  {uri: '/government', tab: 'Κυβερνητικές αποφάσεις'},
   {uri: '/facts', tab: 'Αλήθειες και μύθοι'},
   {uri: '/remote-work', tab: 'Δουλειά από το σπίτι'},
 ];
-const headerContact = 'Κουμπί έκτακτης ανάγκης';
+const headerContact = 'Έκτακτη ανάγκη';
 
 const Layout = ({children, uri}) => {
 
@@ -42,6 +43,7 @@ const Layout = ({children, uri}) => {
 
   const [contactDrawerOpen, setContactDrawerOpen] = useState(false);
   const [selected, setSelected] = useState(pageTab);
+  const [mobileMenuDrawerOpen, setMobileMenuDrawerOpen] = useState(false);
 
   useEffect(() => {
     setSelected(pageTab);
@@ -64,7 +66,8 @@ const Layout = ({children, uri}) => {
       <ErrorBoundary>
         <Header tabs={headerTabs} contact={headerContact}
                 selected={selected} setSelected={setSelected}
-                onContactClick={() => setContactDrawerOpen(true)}/>
+                onContactClick={() => setContactDrawerOpen(true)}
+                onMobileMenuClick={() => setMobileMenuDrawerOpen(true)}/>
         <main style={{minHeight: '100vh', width: '100vw', overflowY: 'hidden'}}>
           <div style={{height: headerHeight, width: '100%'}}/>
           <Box display='flex' flexDirection='column'>
@@ -72,6 +75,13 @@ const Layout = ({children, uri}) => {
           </Box>
         </main>
         <Footer/>
+        <MobileMenuDrawer
+            open={mobileMenuDrawerOpen}
+            handleClose={() => setMobileMenuDrawerOpen(false)}
+            handleOpen={() => setMobileMenuDrawerOpen(true)}
+            menuItems={headerTabs}
+            contactItem={headerContact}
+            contactClick={() => setContactDrawerOpen(true)}/>
         <EmergencyDrawer
             open={contactDrawerOpen}
             handleClose={() => setContactDrawerOpen(false)}

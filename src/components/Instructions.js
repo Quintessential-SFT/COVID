@@ -13,10 +13,10 @@ import inst6 from "../images/instructions/Group 1319.svg"
 
 import instM1 from "../images/instructions/mobile/Group 1311.svg"
 import instM2 from "../images/instructions/mobile/Group 1367.svg"
-import instM3 from "../images/instructions/mobile/Group 1369.svg"
-import instM4 from "../images/instructions/mobile/Group 1370.svg"
-import instM5 from "../images/instructions/mobile/Group 1371.svg"
-import instM6 from "../images/instructions/mobile/Group 1372.svg"
+import instM3 from "../images/instructions/mobile/Group 1372.svg"
+import instM4 from "../images/instructions/mobile/Group 1369.svg"
+import instM5 from "../images/instructions/mobile/Group 1370.svg"
+import instM6 from "../images/instructions/mobile/Group 1371.svg"
 import {Hidden} from "@material-ui/core";
 
 
