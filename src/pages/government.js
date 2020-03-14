@@ -51,8 +51,8 @@ const GovernmentPage = () => {
           <NewsFrontPage title={"Υπουργικές αποφάσεις"} data={feedData} loading={loading}/>
           <VideoSection title={"Πως να προστατευτείτε από τον ιό"}
                         embedUrl={"https://www.youtube.com/embed/1APwq1df6Mw"}/>
-          <VideoSection variant title={"Πως να προστατευτείτε από τον ιό"}
-                        embedUrl={"https://www.youtube.com/embed/1APwq1df6Mw"}/>
+          <VideoSection variant title={"Ευπαθείς ομάδες"}
+                        embedUrl={"https://www.youtube.com/embed/u90QoH4l5BE"}/>
           <Instructions title={"Γενικές οδηγίες πρόληψης και δράσεις σε περίπτωση ύποπτων συμπτωμάτων"}
           description={"Εδώ εμφανίζονται τελευταία νέα, ανακοινώσεις και δημοσιεύσεις από το Υπουργείο Υγείας και τους αρμόδιους κυβερνητικούς φορείς καθώς και χρήσιμες συμβουλές για το πως να προφυλαχθείτε από τον COVID 19"}
           source={"Κυβέρνηση της Σλοβενίας: www.gov.si"}/>
