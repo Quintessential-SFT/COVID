@@ -9,7 +9,7 @@ import {mapCardSectionPrismicItem} from "../utils/prismicSlices";
 const WorkFromHome = ({data}) => {
   if (!data || !data.prismicWorkFromHome) return '';
   const { data: pageData } = data.prismicWorkFromHome;
-console.log(pageData.body)
+
   return (
       <>
         <SEO title="Δουλειά από το σπίτι"/>
