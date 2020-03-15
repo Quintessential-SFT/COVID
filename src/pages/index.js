@@ -5,7 +5,7 @@ import NewsTop from "../components/NewsTop";
 import NewsFeed from "../components/NewsFeed";
 import {makeStyles} from "@material-ui/core/styles";
 import { useSelector, useDispatch } from 'react-redux';
-import { getWHOData } from '../redux/thunks';
+import { getFeedData } from '../redux/thunks';
 import { getGreekCovidData } from '../redux/thunks/greekCovidData';
 import {graphql} from "gatsby";
 
@@ -24,7 +24,7 @@ const IndexPage = ({data}) => {
 
   useEffect(() => {
     dispatch(getGreekCovidData());
-    dispatch(getWHOData());
+    dispatch(getFeedData());
   }, []);
 
   if (!data || !data.prismicNews) return '';
@@ -39,7 +39,7 @@ const IndexPage = ({data}) => {
                    totalCases={covidData ? covidData.Confirmed: null}
                    recoveredCases={covidData ? covidData.Recovered: null}
                    deaths={covidData ? covidData.Deaths: null}/>
-          <NewsFeed data={feed.WHORssItems} loading={feed.loading}/>
+          <NewsFeed data={feed.FeedRssItems} loading={feed.loading}/>
         </Box>
       </>
   )

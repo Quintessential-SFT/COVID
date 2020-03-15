@@ -2,11 +2,10 @@ import React, {useEffect} from "react"
 import SEO from "../components/utility/SEO"
 import Box from "@material-ui/core/Box";
 import Hero from "../components/Hero";
-import StayHome from "../images/COVID-stay-home.png"
 import NewsFrontPage from "../components/NewsFrontPage";
 import VideoSection from "../components/VideoSection";
 import {useDispatch, useSelector} from 'react-redux';
-import {getWHOData} from '../redux/thunks';
+import {getFeedData} from '../redux/thunks';
 import Instructions from "../components/Instructions";
 import {graphql} from "gatsby";
 
@@ -16,7 +15,7 @@ const GovernmentPage = ({data}) => {
   const feed = useSelector(state => state.feed);
 
   useEffect(() => {
-    dispatch(getWHOData());
+    dispatch(getFeedData());
   }, []);
 
   if (!data || !data.prismicGovernment) return '';
@@ -31,9 +30,9 @@ const GovernmentPage = ({data}) => {
               description={pageData.description}
               image={pageData.image ? pageData.image.url : null}
           />
-          <NewsFrontPage title={"Ανακοινώσεις Υπουργείου Υγείας"} data={feed.WHORssItems}
-                         loading={feed.loading} variant/>
-          <NewsFrontPage title={"Ανακοινώσεις ΕΟΔΥ"} data={feed.WHORssItems} loading={feed.loading}/>
+          {/*<NewsFrontPage title={"Ανακοινώσεις Υπουργείου Υγείας"} data={feed.FeedRssItems}*/}
+          {/*               loading={feed.loading} variant/>*/}
+          {/*<NewsFrontPage title={"Ανακοινώσεις ΕΟΔΥ"} data={feed.FeedRssItems} loading={feed.loading}/>*/}
           {pageData.video_section && pageData.video_section.map((vid, ind) => {
             return (
                 <VideoSection key={ind} variant={ind % 2 === 1}

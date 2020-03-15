@@ -1,26 +1,22 @@
-import { getWHONews } from '../../requests';
-import { addRssItems, startFeedLoading, stopFeedLoading, setFeedError } from '../actions';
-import xml2js from 'xml2js';
+import {getNewsFeed} from '../../requests';
+import {
+  startFeedLoading,
+  stopFeedLoading,
+  setFeedError,
+  addFeedRssItems
+} from '../actions';
 
-export function getWHOData() {
+export function getFeedData() {
   return dispatch => {
     dispatch(startFeedLoading());
-    getWHONews()
-      .then(res => {
-        const data = res.data;
-        return xml2js.parseStringPromise(data);
-      })
-      .then(res => {
-        const timeout = setTimeout(() => {
-          const data = res.rss.channel[0].item;
+    getNewsFeed()
+        .then(res => {
           dispatch(stopFeedLoading());
-          dispatch(addRssItems(data));
-          clearTimeout(timeout);
-        }, 100);
-      })
-      .catch(error => {
-        dispatch(setFeedError(error));
-        dispatch(stopFeedLoading());
-      });
+          dispatch(addFeedRssItems(res.data));
+        })
+        .catch(error => {
+          dispatch(setFeedError(error));
+          dispatch(stopFeedLoading());
+        });
   };
 }

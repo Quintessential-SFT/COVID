@@ -1,7 +1,13 @@
-import { ADD_WHO_RSS_ITEMS, ADD_WHO_RSS_ITEM, SET_FEED_ERROR, START_FEED_LOADING, STOP_FEED_LOADING } from '../actionTypes';
+import {
+  SET_FEED_ERROR,
+  START_FEED_LOADING,
+  STOP_FEED_LOADING,
+  ADD_FEED_RSS_ITEM,
+  ADD_FEED_RSS_ITEMS
+} from '../actionTypes';
 
 const initialState = {
-  WHORssItems: [],
+  FeedRssItems: [],
   error: false,
   loading: false
 }
@@ -9,28 +15,28 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case ADD_WHO_RSS_ITEMS: {
+    case ADD_FEED_RSS_ITEMS: {
       if (!action.payload) return state;
-      const oldItems = state.WHORssItems;
+      const oldItems = state.FeedRssItems;
       const newItems = Array.isArray(action.payload) && action.payload.filter(item => {
-        const exists = oldItems.find(oldItem => item.id === oldItem.id);
+        const exists = oldItems.find(oldItem => item.title === oldItem.title);
         return !exists;
       })
       return {
         ...state,
-        WHORssItems: [...state.WHORssItems, ...newItems]
+        FeedRssItems: [...state.FeedRssItems, ...newItems]
       }
     }
-    case ADD_WHO_RSS_ITEM: {
+    case ADD_FEED_RSS_ITEM: {
       if (!action.payload) return state;
-      const oldItems = [...state.WHORssItems];
-      const exists = oldItems.find(item => item.id === action.payload.id);
+      const oldItems = [...state.FeedRssItems];
+      const exists = oldItems.find(item => item.title === action.payload.title);
       if (exists) {
         return state;
       }
       return {
         ...state,
-        WHORssItems: [...state.WHORssItems, action.payload]
+        FeedRssItems: [...state.FeedRssItems, action.payload]
       }
     }
     case SET_FEED_ERROR: {
@@ -46,7 +52,7 @@ export default function(state = initialState, action) {
       }
     }
     case STOP_FEED_LOADING: {
-      return { 
+      return {
         ...state,
         loading: false
       }
