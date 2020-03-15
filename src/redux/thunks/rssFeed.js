@@ -11,13 +11,16 @@ export function getWHOData() {
         return xml2js.parseStringPromise(data);
       })
       .then(res => {
-        const data = res.rss.channel[0].item;
-        dispatch(stopFeedLoading());
-        dispatch(addRssItems(data));
+        const timeout = setTimeout(() => {
+          const data = res.rss.channel[0].item;
+          dispatch(stopFeedLoading());
+          dispatch(addRssItems(data));
+          clearTimeout(timeout);
+        }, 100);
       })
       .catch(error => {
         dispatch(setFeedError(error));
         dispatch(stopFeedLoading());
       });
-  }
+  };
 }

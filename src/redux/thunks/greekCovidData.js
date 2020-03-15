@@ -6,12 +6,15 @@ export function getGreekCovidData() {
     dispatch(startGreekCovidDataLoading());
     getGreekCOVIDData()
       .then(res => {
-        dispatch(setGreekCovidData(res.data[0]));
-        dispatch(stopGreekCovidDataLoading());
+        const timeout = setTimeout(() => {
+          dispatch(setGreekCovidData(res.data[0]));
+          dispatch(stopGreekCovidDataLoading());
+          clearTimeout(timeout);
+        }, 100);
       })
       .catch(error => {
         dispatch(setGreekCovidDataError(error));
         dispatch(stopGreekCovidDataLoading());
       });
-  }
+  };
 }
