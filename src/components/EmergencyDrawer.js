@@ -51,7 +51,7 @@ export default function EmergencyDrawer(props) {
                 <Typography paragraph variant={'h4'} className={classes.purpleColor}>
                   Έκτακτη ανάγκη;
                 </Typography>
-                <Typography variant={'h6'}>Ψυχραιμία! Δες μπορείς να κάνεις.</Typography>
+                <Typography variant={'h6'}>Ψυχραιμία! Δες τι μπορείς να κάνεις.</Typography>
               </Box>
               <Box className={classes.marginBottom}>
                 <Typography variant={'body2'} paragraph>
