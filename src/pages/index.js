@@ -7,6 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import { useSelector, useDispatch } from 'react-redux';
 import { getWHOData } from '../redux/thunks';
 import { getGreekCovidData } from '../redux/thunks/greekCovidData';
+import {graphql} from "gatsby";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const IndexPage = (props) => {
+const IndexPage = ({data}) => {
   const feed = useSelector(state => state.feed);
   const greekCovidData = useSelector(state => state.greekCovidData);
   const { data: covidData } = greekCovidData;
@@ -26,14 +27,18 @@ const IndexPage = (props) => {
     dispatch(getWHOData());
   }, []);
 
+  if (!data || !data.prismicNews) return '';
+  const { data: pageData } = data.prismicNews;
+
   return (
       <>
         <SEO title="Τελευταία νέα"/>
         <Box className={classes.root}>
-          <NewsTop title={"Titlos"}
-                   description={"Το covid.quintessential.gr αποτελεί ανεξάρτητη ιδιωτική πρωτοβουλία που δημιουργήθηκε για να παρέχει στους πολίτες ολοκληρωμένη και όσο το δυνατόν πιο εμπεριστατωμένη ενημέρωση σχετικά με την εξάπλωση του COVID-19. Δεν αποτελείται από γιατρούς και ειδικούς επιστήμονες, αλλά από επαγγελματίες προγραμματιστές με αίσθημα κοινωνικής ευθύνης που συστήνουν αμέριστη υπακοή στι γνώμη των επιστημόνων υγείας. "}
-                   totalCases={covidData ? covidData.Confirmed: null} recoveredCases={covidData ? covidData.Recovered: null} deaths={covidData ? covidData.Deaths: null}
-          />
+          <NewsTop title={pageData.title}
+                   description={pageData.description}
+                   totalCases={covidData ? covidData.Confirmed: null}
+                   recoveredCases={covidData ? covidData.Recovered: null}
+                   deaths={covidData ? covidData.Deaths: null}/>
           <NewsFeed data={feed.WHORssItems} loading={feed.loading}/>
         </Box>
       </>
@@ -41,3 +46,15 @@ const IndexPage = (props) => {
 };
 
 export default IndexPage;
+
+export const newsPageQuery = graphql`
+    query NewsPage {
+        prismicNews {
+            data {
+                title
+                description
+            }
+        }
+    }
+`;
+

@@ -7,7 +7,7 @@ import NewsFrontPage from "../components/NewsFrontPage";
 import { useSelector, useDispatch } from 'react-redux';
 import { getWHOData } from '../redux/thunks';
 
-const SecondPage = () => {
+const WorkFromHome = () => {
 
   const feed = useSelector(state => state.feed);
   const dispatch = useDispatch();
@@ -33,4 +33,4 @@ const SecondPage = () => {
   )
 };
 
-export default SecondPage
+export default WorkFromHome

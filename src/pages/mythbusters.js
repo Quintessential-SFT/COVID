@@ -5,7 +5,7 @@ import FactImg from "../images/COVID-fact.png";
 import Hero from "../components/Hero";
 import Fact from "../components/Fact";
 
-const SecondPage = () => (
+const Mythbusters = () => (
   <>
     <SEO title="Αλήθειες και μύθοι" />
     <Box>
@@ -31,4 +31,4 @@ const SecondPage = () => (
   </>
 );
 
-export default SecondPage
+export default Mythbusters

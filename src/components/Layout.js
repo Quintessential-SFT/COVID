@@ -14,8 +14,8 @@ export const headerHeight = 71;
 const headerTabs = [
   {uri: '/', tab: 'Τελευταία νέα'},
   {uri: '/government', tab: 'Κυβερνητικές αποφάσεις'},
-  {uri: '/facts', tab: 'Αλήθειες και μύθοι'},
-  {uri: '/remote-work', tab: 'Δουλειά από το σπίτι'},
+  {uri: '/mythbusters', tab: 'Αλήθειες και μύθοι'},
+  {uri: '/work-from-home', tab: 'Δουλειά από το σπίτι'},
 ];
 const headerContact = 'Έκτακτη ανάγκη';
 
@@ -30,9 +30,9 @@ const Layout = ({children, uri}) => {
           return 0;
         case 'government':
           return 1;
-        case 'facts':
+        case 'mythbusters':
           return 2;
-        case 'remote-work':
+        case 'work-from-home':
           return 3;
         default:
           return 0;
