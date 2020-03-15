@@ -11,11 +11,11 @@ import {graphql} from "gatsby";
 
 
 const GovernmentPage = ({data}) => {
-  const dispatch = useDispatch();
-  const feed = useSelector(state => state.feed);
+  // const dispatch = useDispatch();
+  // const feed = useSelector(state => state.feed);
 
   useEffect(() => {
-    dispatch(getFeedData());
+    // dispatch(getFeedData());
   }, []);
 
   if (!data || !data.prismicGovernment) return '';
