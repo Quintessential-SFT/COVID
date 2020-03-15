@@ -1,0 +1,18 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Title",
+        "placeholder" : "Title"
+      }
+    },
+    "description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Description",
+        "placeholder" : "Description"
+      }
+    }
+  }
+}

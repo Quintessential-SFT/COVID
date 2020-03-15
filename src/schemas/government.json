@@ -1,0 +1,69 @@
+{
+  "Main": {
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title",
+        "placeholder": "Title"
+      }
+    },
+    "description": {
+      "type": "Text",
+      "config": {
+        "label": "Description",
+        "placeholder": "Description"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "video_section": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "video_section_title": {
+            "type": "Text",
+            "config": {
+              "label": "Video Section Title",
+              "placeholder": "Video Section Title"
+            }
+          },
+          "video_section_embed_url": {
+            "type": "Text",
+            "config": {
+              "label": "Video Section Embed URL",
+              "placeholder": "Video Section Embed URL"
+            }
+          }
+        },
+        "label": "Video Section"
+      }
+    },
+    "instructions_title": {
+      "type": "Text",
+      "config": {
+        "label": "Instructions Title",
+        "placeholder": "Instructions Title"
+      }
+    },
+    "instructions_description": {
+      "type": "Text",
+      "config": {
+        "label": "Instructions Description",
+        "placeholder": "Instructions Description"
+      }
+    },
+    "instructions_source": {
+      "type": "Text",
+      "config": {
+        "label": "Instructions Source",
+        "placeholder": "Instructions Source"
+      }
+    }
+  }
+}

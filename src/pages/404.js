@@ -34,7 +34,7 @@ const NotFoundPage = () => {
 
   return (
       <>
-        <SEO title="404: Not found"/>
+        <SEO title="404: Δεν βρέθηκε"/>
         <Box display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"space-evenly"} className={classes.root}>
           <img src={icon} alt={'covid-icon'} className={classes.icon}/>
           <Typography variant='h4'>Η σελίδα δεν βρέθηκε. Μήπως έμεινε και αυτή σπίτι; Μπράβο της. Κάνε το ίδιο.</Typography>

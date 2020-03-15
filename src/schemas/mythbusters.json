@@ -1,0 +1,63 @@
+{
+  "Main": {
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title",
+        "placeholder": "Title"
+      }
+    },
+    "description": {
+      "type": "Text",
+      "config": {
+        "label": "Description",
+        "placeholder": "Description"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "facts": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "fact_image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Fact Image"
+            }
+          },
+          "myth": {
+            "type": "Text",
+            "config": {
+              "label": "Myth",
+              "placeholder": "Myth"
+            }
+          },
+          "fact_description": {
+            "type": "Text",
+            "config": {
+              "label": "Fact Description",
+              "placeholder": "Description"
+            }
+          },
+          "fact": {
+            "type": "Text",
+            "config": {
+              "label": "Fact",
+              "placeholder": "Fact"
+            }
+          }
+        },
+        "label": "Facts"
+      }
+    }
+  }
+}

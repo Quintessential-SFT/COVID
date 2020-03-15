@@ -14,10 +14,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center'
   },
   rootPrimary: {
-    backgroundColor: theme.palette.common.white
+    backgroundColor: theme.palette.grey[100]
   },
   rootSecondary: {
-    backgroundColor: theme.palette.grey[100]
+    backgroundColor: theme.palette.common.white
   },
   container: {
     maxWidth: 540,
