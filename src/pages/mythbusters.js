@@ -4,31 +4,60 @@ import Box from "@material-ui/core/Box";
 import FactImg from "../images/COVID-fact.png";
 import Hero from "../components/Hero";
 import Fact from "../components/Fact";
+import {graphql} from "gatsby";
 
-const Mythbusters = () => (
-  <>
-    <SEO title="Αλήθειες και μύθοι" />
-    <Box>
-      <Hero
-          title={"Αλήθειες και μύθοι για τον COVID-19"}
-          description={"Στην ενότητα εμφανίζεται πληροφοριακό υλικό από την ιστοσελίδα του Παγκόσμιου Οργανισμού Υγείας (ΠΟΥ), προσαρμοσμένο στα ελληνικά. \n Εκτός από τον COVID-19 επικίνδυνες είναι και οι ανυπόστατες φήμες και οι “αστικοί μύθοι” που δεν έχουν καμία επιστημονική βάση. \n Ας δούμε τι ισχύει και τι όχι σύμφωνα με τον ΠΟΥ"}
-          image={FactImg}
-      />
-      <Fact
-          myth={"Η Ελλάδα προστατεύεται από το ζεστό κλίμα της"}
-          description={"Από τα μέχρι στιγμής στοιχεία, ο νέος κορωνοϊός μπορεί να μεταδοθεί σε ΟΛΕΣ ΤΙΣ ΠΕΡΙΟΧΕΣ, συμπεριλαμβανομένων των χωρών με ζεστό ή/και υγρό κλίμα. \n Απαιτείται προσοχή όταν ταξιδεύετε σε χώρες που υπάρχουν κρούσματα του COVID-19 \n Tίποτα δεν μπορεί να υποκαταστήσει το συχνό και σωστό πλύσιμο των χεριών και η τήρηση των κανόνων ατομικής υγιεινής."}
-          fact={"Ο COVID-19 αναπτύσσεται σε όλες τις χώρες ακόμα και σε αυτές με ζεστό και υγρό κλίμα  "}
-          image={FactImg}
-      />
-      <Fact
-          myth={"Η Ελλάδα προστατεύεται από το ζεστό κλίμα της"}
-          description={"Από τα μέχρι στιγμής στοιχεία, ο νέος κορωνοϊός μπορεί να μεταδοθεί σε ΟΛΕΣ ΤΙΣ ΠΕΡΙΟΧΕΣ, συμπεριλαμβανομένων των χωρών με ζεστό ή/και υγρό κλίμα. \n Απαιτείται προσοχή όταν ταξιδεύετε σε χώρες που υπάρχουν κρούσματα του COVID-19 \n Tίποτα δεν μπορεί να υποκαταστήσει το συχνό και σωστό πλύσιμο των χεριών και η τήρηση των κανόνων ατομικής υγιεινής."}
-          fact={"Ο COVID-19 αναπτύσσεται σε όλες τις χώρες ακόμα και σε αυτές με ζεστό και υγρό κλίμα  "}
-          image={FactImg}
-          variant
-      />
-    </Box>
-  </>
-);
+const Mythbusters = ({data}) => {
+
+  if (!data || !data.prismicMythbusters) return '';
+  const { data: pageData } = data.prismicMythbusters;
+
+
+  return (
+      <>
+        <SEO title="Αλήθειες και μύθοι"/>
+        <Box>
+          <Hero
+              title={pageData.title}
+              description={pageData.description}
+              image={pageData.image ? pageData.image.url : null}
+          />
+          {pageData.facts && pageData.facts.map((fact, ind) => {
+            return (
+                <Fact
+                    variant={ind % 2 === 1}
+                    key={ind}
+                    myth={fact.myth}
+                    description={fact.fact_description}
+                    fact={fact.fact}
+                    image={fact.fact_image ? fact.fact_image.url : null}
+                />
+            )
+          })}
+        </Box>
+      </>
+  )
+};
 
 export default Mythbusters
+
+export const mythbustersPageQuery = graphql`
+    query MythbustersPage {
+        prismicMythbusters {
+            data {
+                title
+                description
+                image {
+                    url
+                }
+                facts {
+                    myth
+                    fact_description
+                    fact
+                    fact_image {
+                        url
+                    }
+                }
+            }
+        }
+    }
+`;

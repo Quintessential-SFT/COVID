@@ -79,11 +79,8 @@ module.exports = {
         lang: '*',
         schemas: {
           news: require('./src/schemas/news'),
-          // our_clients_page: require('./src/schemas/ourClientsPage'),
-          // our_partners_page: require('./src/schemas/ourPartnersPage'),
-          // the_process_page: require('./src/schemas/theProcessPage'),
-          // faq_page: require('./src/schemas/faqPage'),
-          // footer: require('./src/schemas/footer'),
+          government: require('./src/schemas/government'),
+          mythbusters: require('./src/schemas/mythbusters'),
         }
       },
     },
