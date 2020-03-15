@@ -29,12 +29,12 @@ export default function NewsFeed(props) {
         <Grid container spacing={8} className={classes.gridContainer}>
           {data && Array.isArray(data) && data.map((item, ind) => {
             return (
-                <Grid key={ind} item className={classes.gridItem}>
+                <Grid key={item.id ? item.id : `feed-card-${ind}`} item className={classes.gridItem}>
                   <FeedCard
                       title={item.title}
                       description={item.description}
-                      source={"onomapigis.gr"} url={item.link}
-                      // image={"https://source.unsplash.com/random"}
+                      source={item.source} url={item.link}
+                      image={item.image}
                   />
                 </Grid>
             )
