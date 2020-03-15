@@ -27,10 +27,10 @@ const useStyles = makeStyles(theme => ({
   borderBox: {
     height: '100%',
     border: '1px solid rgba(0, 0, 0, 0.87)',
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
   }
 }));
 
@@ -62,19 +62,19 @@ export default function NewsTop(props) {
                   </Grid>
                   <Grid item xs={12}>
                     <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography variant={"body2"}>Σύνολο κρουσμάτων</Typography>
+                      <Typography noWrap variant={"body2"}>Σύνολο κρουσμάτων</Typography>
                       <Typography variant={"h6"}>{totalCases ? totalCases : '-'}</Typography>
                     </Box>
                   </Grid>
                   <Grid item xs={6}>
                     <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography variant={"body2"}>Θεραπεύτηκαν</Typography>
+                      <Typography noWrap variant={"body2"}>Αναρρώσεις</Typography>
                       <Typography variant={"h6"}>{recoveredCases ? recoveredCases : '-'}</Typography>
                     </Box>
                   </Grid>
                   <Grid item xs={6}>
                     <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography variant={"body2"}>Θάνατοι</Typography>
+                      <Typography noWrap variant={"body2"}>Θάνατοι</Typography>
                       <Typography variant={"h6"}>{deaths ? deaths : "-"}</Typography>
                     </Box>
                   </Grid>
