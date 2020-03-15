@@ -78,7 +78,7 @@ export default function NewsFrontPage(props) {
                       <FeedCard
                           title={item.title}
                           description={item.description}
-                          source={"onomapigis.gr"} url={item.link[0]}
+                          source={"onomapigis.gr"} url={item.link}
                           // image={"https://source.unsplash.com/random"}
                       />
                     </Grid>
