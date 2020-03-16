@@ -6,7 +6,7 @@ import NewsFeed from "../components/NewsFeed";
 import {makeStyles} from "@material-ui/core/styles";
 import { useSelector, useDispatch } from 'react-redux';
 import { getFeedData } from '../redux/thunks';
-import { getGreekCovidData } from '../redux/thunks/greekCovidData';
+import { getGreekCovidData } from '../redux/thunks';
 import {graphql} from "gatsby";
 
 const useStyles = makeStyles(theme => ({

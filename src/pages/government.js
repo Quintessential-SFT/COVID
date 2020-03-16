@@ -6,17 +6,17 @@ import VideoSection from "../components/VideoSection";
 import Instructions from "../components/Instructions";
 import NewsFrontPage from "../components/NewsFrontPage";
 import {useDispatch, useSelector} from 'react-redux';
-import {getFeedData} from '../redux/thunks';
 import {graphql} from "gatsby";
+import {getGovernmentData} from "../redux/thunks";
 
 
 const GovernmentPage = ({data}) => {
-  // const dispatch = useDispatch();
-  // const feed = useSelector(state => state.feed);
+  const dispatch = useDispatch();
+  const govNews = useSelector(state => state.governmentNews);
 
-  // useEffect(() => {
-    // dispatch(getFeedData());
-  // }, []);
+  useEffect(() => {
+    dispatch(getGovernmentData());
+  }, []);
 
   if (!data || !data.prismicGovernment) return '';
   const {data: pageData} = data.prismicGovernment;
@@ -30,9 +30,7 @@ const GovernmentPage = ({data}) => {
               description={pageData.description}
               image={pageData.image ? pageData.image.url : null}
           />
-          {/*<NewsFrontPage limit={3} title={"Ανακοινώσεις Υπουργείου Υγείας"} data={feed.FeedRssItems}*/}
-          {/*               loading={feed.loading} variant/>*/}
-          {/*<NewsFrontPage limit={3} title={"Ανακοινώσεις ΕΟΔΥ"} data={feed.FeedRssItems} loading={feed.loading}/>*/}
+          <NewsFrontPage limit={3} title={"Ανακοινώσεις ΕΟΔΥ"} data={govNews.GovernmentNewsRssItems} loading={govNews.loading} variant/>
           {pageData.video_section && pageData.video_section.map((vid, ind) => {
             return (
                 <VideoSection key={ind} variant={ind % 2 === 1}

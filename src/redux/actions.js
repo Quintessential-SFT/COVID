@@ -6,7 +6,12 @@ import {
   STOP_GREEK_COVID_DATA_LOADING,
   SET_GREEK_COVID_DATA,
   SET_GREEK_COVID_DATA_ERROR,
-  ADD_FEED_RSS_ITEM, ADD_FEED_RSS_ITEMS
+  ADD_FEED_RSS_ITEM,
+  ADD_FEED_RSS_ITEMS,
+  ADD_GOVERNMENT_RSS_ITEM,
+  ADD_GOVERNMENT_RSS_ITEMS,
+  SET_GOVERNMENT_ERROR,
+  START_GOVERNMENT_LOADING, STOP_GOVERNMENT_LOADING
 } from './actionTypes';
 
 export const addFeedRssItem = item => ({
@@ -48,4 +53,27 @@ export const setGreekCovidData = data => ({
 export const setGreekCovidDataError = error => ({
   type: SET_GREEK_COVID_DATA_ERROR,
   payload: {error}
+});
+
+export const addGovernmentRssItem = item => ({
+  type: ADD_GOVERNMENT_RSS_ITEM,
+  payload: item
+});
+
+export const addGovernmentRssItems = items => ({
+  type: ADD_GOVERNMENT_RSS_ITEMS,
+  payload: items
+});
+
+export const setGovernmentError = error => ({
+  type: SET_GOVERNMENT_ERROR,
+  payload: {error}
+});
+
+export const startGovernmentLoading = () => ({
+  type: START_GOVERNMENT_LOADING
+});
+
+export const stopGovernmentLoading = () => ({
+  type: STOP_GOVERNMENT_LOADING
 });
