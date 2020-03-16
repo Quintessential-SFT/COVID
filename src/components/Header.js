@@ -108,13 +108,13 @@ export default function Header(props) {
                 </Box>
               </Hidden>
               <Box display={"flex"} alignItems={"center"} justifyContent={"flex-end"} className={classes.sideElements}>
-                <Hidden mdDown initialWidth={'lg'}>
+                <Hidden mdDown initialWidth={'xs'}>
                   {contact &&
                   <Button variant='contained' color={"secondary"} className={classes.contactButton}
                           onClick={onContactClick}>{contact}</Button>
                   }
                 </Hidden>
-                <Hidden lgUp initialWidth={'lg'}>
+                <Hidden lgUp initialWidth={'xl'}>
                   <Button variant='outlined' color={"secondary"} className={classes.contactButton}
                           onClick={onMobileMenuClick}>
                     <Menu/>
