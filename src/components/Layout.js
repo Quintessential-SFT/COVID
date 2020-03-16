@@ -71,7 +71,7 @@ const Layout = ({children, uri}) => {
                 selected={selected} setSelected={setSelected}
                 onContactClick={() => setContactDrawerOpen(true)}
                 onMobileMenuClick={() => setMobileMenuDrawerOpen(true)}/>
-        <main style={{minHeight: '100vh', width: '100vw', overflowY: 'hidden'}}>
+        <main style={{minHeight: '100vh', overflowX: 'hidden'}}>
           <div style={{height: headerHeight, width: '100%'}}/>
           <Box display='flex' flexDirection='column'>
             {children}

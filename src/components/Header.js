@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
   iconContainer: {
     cursor: 'unset'
   },
+  sideElement: {
+    minWidth: 127,
+  },
   tabs: {
     marginRight: theme.spacing(2),
     height: '100%',
@@ -72,9 +75,11 @@ export default function Header(props) {
         <AppBar position='fixed' className={classes.appBar}>
           <Toolbar>
             <Box display={"flex"} justifyContent={'space-between'} alignItems={"stretch"} flexWrap={"nowrap"} flex={1} maxWidth={"100%"}>
-              <MuiLink to={'/'} className={classes.iconContainer}>
-                <IconButton><img src={COVIDIcon} alt={'COVID-icon'} className={classes.icon}/></IconButton>
-              </MuiLink>
+              <Box className={classes.sideElement}>
+                <MuiLink to={'/'} className={classes.iconContainer}>
+                  <IconButton><img src={COVIDIcon} alt={'COVID-icon'} className={classes.icon}/></IconButton>
+                </MuiLink>
+              </Box>
               <Hidden mdDown initialWidth={'xs'}>
                 <Box display={"flex"} alignItems={"center"} justifyContent={"center"} flex={1}>
                   <Tabs
@@ -102,7 +107,7 @@ export default function Header(props) {
                   </Tabs>
                 </Box>
               </Hidden>
-              <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
+              <Box display={"flex"} alignItems={"center"} justifyContent={"flex-end"} className={classes.sideElements}>
                 <Hidden mdDown initialWidth={'lg'}>
                   {contact &&
                   <Button variant='contained' color={"secondary"} className={classes.contactButton}
