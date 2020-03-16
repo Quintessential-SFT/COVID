@@ -2,11 +2,11 @@ import React, {useEffect} from "react"
 import SEO from "../components/utility/SEO"
 import Box from "@material-ui/core/Box";
 import Hero from "../components/Hero";
-import NewsFrontPage from "../components/NewsFrontPage";
 import VideoSection from "../components/VideoSection";
+import Instructions from "../components/Instructions";
+import NewsFrontPage from "../components/NewsFrontPage";
 import {useDispatch, useSelector} from 'react-redux';
 import {getFeedData} from '../redux/thunks';
-import Instructions from "../components/Instructions";
 import {graphql} from "gatsby";
 
 
@@ -14,9 +14,9 @@ const GovernmentPage = ({data}) => {
   // const dispatch = useDispatch();
   // const feed = useSelector(state => state.feed);
 
-  useEffect(() => {
+  // useEffect(() => {
     // dispatch(getFeedData());
-  }, []);
+  // }, []);
 
   if (!data || !data.prismicGovernment) return '';
   const {data: pageData} = data.prismicGovernment;
