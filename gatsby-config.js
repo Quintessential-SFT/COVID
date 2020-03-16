@@ -2,13 +2,15 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const siteUrl = 'https://covid.quintessential.gr/';
+
 module.exports = {
   siteMetadata: {
     title: 'Ενημέρωση για τον COVID-19',
     description: 'Live Data, ενημέρωση, πρόληψη, αλήθειες και μύθοι για τον ιο & εργαλεία για απομακρυσμένη εργασία',
     author: `Quintessential SFT`,
-    image: `src/images/COVID-cover-image.png`,
-    siteUrl: 'https://covid.quintessential.gr/',
+    image: `${siteUrl}img/COVID-cover-image.png`,
+    siteUrl: siteUrl,
   },
   plugins: [
     {
