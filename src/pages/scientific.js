@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Hero from "../components/Hero";
 import {graphql} from "gatsby";
 import NewsFrontPage from "../components/NewsFrontPage";
-import {mapCardSectionPrismicItem} from "../utils/prismicSlices";
+import {mapCardSectionPrismicItems} from "../utils/prismicSlices";
 
 const Scientific = ({data}) => {
   if (!data || !data.prismicScientific) return '';
@@ -20,7 +20,7 @@ const Scientific = ({data}) => {
               image={pageData.image ? pageData.image.url : null}
           />
           {pageData.body && pageData.body.map((section, ind) => {
-            const formatedData = mapCardSectionPrismicItem(section.items);
+            const formatedData = mapCardSectionPrismicItems(section.items);
             return (
                 <NewsFrontPage key={ind}
                                variant={ind % 2 === 0} color={'secondary'}
@@ -28,7 +28,6 @@ const Scientific = ({data}) => {
                                data={formatedData}/>
             )
           })}
-
         </Box>
       </>
   )

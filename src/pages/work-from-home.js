@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Hero from "../components/Hero";
 import {graphql} from "gatsby";
 import NewsFrontPage from "../components/NewsFrontPage";
-import {mapCardSectionPrismicItem} from "../utils/prismicSlices";
+import {mapCardSectionPrismicItems} from "../utils/prismicSlices";
 
 const WorkFromHome = ({data}) => {
   if (!data || !data.prismicWorkFromHome) return '';
@@ -20,7 +20,7 @@ const WorkFromHome = ({data}) => {
               image={pageData.image ? pageData.image.url : null}
           />
           {pageData.body && pageData.body.map((section, ind) => {
-            const formatedData = mapCardSectionPrismicItem(section.items);
+            const formatedData = mapCardSectionPrismicItems(section.items);
             return (
                 <NewsFrontPage key={ind}
                                variant={ind % 2 === 0} color={'secondary'}

@@ -64,6 +64,70 @@
         "label": "Instructions Source",
         "placeholder": "Instructions Source"
       }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "card_section": {
+            "type": "Slice",
+            "fieldset": "Card Section",
+            "description": "Card Section displaying 3 cards",
+            "icon": "content_copy",
+            "display": "list",
+            "non-repeat": {
+              "cardsection_title": {
+                "type": "Text",
+                "config": {
+                  "label": "CardSection Title",
+                  "placeholder": "CardSection Title"
+                }
+              }
+            },
+            "repeat": {
+              "card_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Card Image"
+                }
+              },
+              "card_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Card Title",
+                  "placeholder": "Card Title"
+                }
+              },
+              "card_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Card Description",
+                  "placeholder": "Card Description"
+                }
+              },
+              "card_source": {
+                "type": "Text",
+                "config": {
+                  "label": "Card Source",
+                  "placeholder": "Card Source"
+                }
+              },
+              "card_url": {
+                "type": "Link",
+                "config": {
+                  "label": "Card URL",
+                  "placeholder": "Card URL",
+                  "allowTargetBlank": true
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

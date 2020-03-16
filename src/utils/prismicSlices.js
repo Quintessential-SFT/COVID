@@ -1,4 +1,4 @@
-export function mapCardSectionPrismicItem(items) {
+export function mapCardSectionPrismicItems(items) {
   return items && items.map(item => (
       {
         title: item && item.card_title,

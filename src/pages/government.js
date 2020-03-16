@@ -8,6 +8,7 @@ import NewsFrontPage from "../components/NewsFrontPage";
 import {useDispatch, useSelector} from 'react-redux';
 import {graphql} from "gatsby";
 import {getGovernmentData} from "../redux/thunks";
+import {mapCardSectionPrismicItems} from "../utils/prismicSlices";
 
 
 const GovernmentPage = ({data}) => {
@@ -30,7 +31,16 @@ const GovernmentPage = ({data}) => {
               description={pageData.description}
               image={pageData.image ? pageData.image.url : null}
           />
-          <NewsFrontPage limit={3} title={"Ανακοινώσεις ΕΟΔΥ"} data={govNews.GovernmentNewsRssItems} loading={govNews.loading} variant/>
+          {pageData.body && pageData.body.map((section, ind) => {
+            const formatedData = mapCardSectionPrismicItems(section.items);
+            return (
+                <NewsFrontPage key={ind}
+                               variant={ind % 2 === 0}
+                               title={section.primary ? section.primary.cardsection_title : null}
+                               data={formatedData}/>
+            )
+          })}
+          <NewsFrontPage limit={3} title={"Ανακοινώσεις ΕΟΔΥ"} data={govNews.GovernmentNewsRssItems} loading={govNews.loading}/>
           {pageData.video_section && pageData.video_section.map((vid, ind) => {
             return (
                 <VideoSection key={ind} variant={ind % 2 === 1}
@@ -64,6 +74,24 @@ export const governmentPageQuery = graphql`
                 instructions_title
                 instructions_description
                 instructions_source
+                body {
+                    ... on PrismicGovernmentBodyCardSection {
+                        primary {
+                            cardsection_title
+                        }
+                        items {
+                            card_title
+                            card_description
+                            card_source
+                            card_url {
+                                url
+                            }
+                            card_image {
+                                url
+                            }
+                        }
+                    }
+                }
             }
         }
     }
