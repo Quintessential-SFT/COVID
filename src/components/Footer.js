@@ -29,11 +29,11 @@ export default function Footer(props) {
       <footer {...rest}>
         <Box p={3} display='flex' justifyContent="center" alignItems="center" flexDirection={'column'} className={classes.root}>
           <MuiLink href='https://quintessential.gr' variant="body1" color='inherit'
-                target="_blank" rel="noopener" className={classes.quint}>
+                className={classes.quint}>
             <img src={FooterImage} alt={'COVID-footer-image'} className={classes.image}/>
           </MuiLink>
-          <MuiLink href='https://quintessential.gr' variant="body1" color='inherit'
-                target="_blank" rel="noopener" className={classes.fork}>
+          <MuiLink href='https://github.com/Quintessential-SFT/COVID' variant="body1" color='inherit'
+                className={classes.fork}>
             <ButtonBase>
               <img src={ForkButton} alt={'fork-button'}/>
             </ButtonBase>
