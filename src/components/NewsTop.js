@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
+import MuiLink from "./utility/MuiLink";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(1),
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
+  },
+  source: {
+    fontSize: 12
   }
 }));
 
@@ -77,6 +81,9 @@ export default function NewsTop(props) {
                       <Typography noWrap variant={"body2"}>Θάνατοι</Typography>
                       <Typography variant={"h6"}>{deaths ? deaths : "-"}</Typography>
                     </Box>
+                  </Grid>
+                  <Grid item xs={12} container justify={"flex-end"}>
+                    <Typography noWrap variant={"body2"} color="textSecondary" className={classes.source}>Πηγή: <MuiLink href={"https://coronavirus.jhu.edu/"}>Johns Hopkins</MuiLink></Typography>
                   </Grid>
                 </Grid>
               </Paper>
