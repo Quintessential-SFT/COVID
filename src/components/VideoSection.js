@@ -1,7 +1,6 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import {headerHeight} from "./Layout";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import clsx from "clsx";
