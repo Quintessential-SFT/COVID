@@ -58,7 +58,7 @@ export default function NewsTop(props) {
                 <Grid container spacing={2}>
                   <Grid item xs={12} container alignItems={"center"} className={classes.titleContainer}>
                     <Box className={classes.dot}/>
-                    <Typography variant={"body1"}>Live στατιστικά:</Typography>
+                    <Typography variant={"body1"}>Live στατιστικά, Ελλάδα</Typography>
                   </Grid>
                   <Grid item xs={12}>
                     <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
