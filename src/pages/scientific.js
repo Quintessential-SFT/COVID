@@ -6,13 +6,13 @@ import {graphql} from "gatsby";
 import NewsFrontPage from "../components/NewsFrontPage";
 import {mapCardSectionPrismicItem} from "../utils/prismicSlices";
 
-const WorkFromHome = ({data}) => {
-  if (!data || !data.prismicWorkFromHome) return '';
-  const {data: pageData} = data.prismicWorkFromHome;
+const Scientific = ({data}) => {
+  if (!data || !data.prismicScientific) return '';
+  const {data: pageData} = data.prismicScientific;
 
   return (
       <>
-        <SEO title="Δουλειά από το σπίτι"/>
+        <SEO title="Επιστημονικη γνώμη"/>
         <Box>
           <Hero
               title={pageData.title}
@@ -34,11 +34,11 @@ const WorkFromHome = ({data}) => {
   )
 };
 
-export default WorkFromHome
+export default Scientific
 
-export const WorkFromHomePageQuery = graphql`
-    query WorkFromHomePage {
-        prismicWorkFromHome {
+export const ScientificPageQuery = graphql`
+    query ScientificPage {
+        prismicScientific {
             data {
                 title
                 description
@@ -46,7 +46,7 @@ export const WorkFromHomePageQuery = graphql`
                     url
                 }
                 body {
-                    ... on PrismicWorkFromHomeBodyCardSection {
+                    ... on PrismicScientificBodyCardSection {
                         primary {
                             cardsection_title
                         }

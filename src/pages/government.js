@@ -30,9 +30,9 @@ const GovernmentPage = ({data}) => {
               description={pageData.description}
               image={pageData.image ? pageData.image.url : null}
           />
-          {/*<NewsFrontPage title={"Ανακοινώσεις Υπουργείου Υγείας"} data={feed.FeedRssItems}*/}
+          {/*<NewsFrontPage limit={3} title={"Ανακοινώσεις Υπουργείου Υγείας"} data={feed.FeedRssItems}*/}
           {/*               loading={feed.loading} variant/>*/}
-          {/*<NewsFrontPage title={"Ανακοινώσεις ΕΟΔΥ"} data={feed.FeedRssItems} loading={feed.loading}/>*/}
+          {/*<NewsFrontPage limit={3} title={"Ανακοινώσεις ΕΟΔΥ"} data={feed.FeedRssItems} loading={feed.loading}/>*/}
           {pageData.video_section && pageData.video_section.map((vid, ind) => {
             return (
                 <VideoSection key={ind} variant={ind % 2 === 1}

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'COVID',
-    description: 'COVID',
+    title: 'Ενημέρωση για τον COVID-19',
+    description: 'Live Data, ενημέρωση, πρόληψη, αλήθειες και μύθοι για τον ιο & εργαλεία για απομακρυσμένη εργασία',
     author: `Quintessential SFT`,
     image: `src/images/COVID-cover-image.png`,
     siteUrl: 'https://covid.quintessential.gr/',
@@ -44,8 +44,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `COVID`,
-        short_name: `COVID`,
+        name: `Ενημέρωση για τον COVID-19`,
+        short_name: `COVID-19`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#FFC600`,
@@ -81,6 +81,8 @@ module.exports = {
           news: require('./src/schemas/news'),
           government: require('./src/schemas/government'),
           mythbusters: require('./src/schemas/mythbusters'),
+          work_from_home: require('./src/schemas/work-from-home'),
+          scientific: require('./src/schemas/scientific'),
         }
       },
     },

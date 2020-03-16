@@ -51,9 +51,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NewsFrontPage(props) {
-  const {title, data, loading = false, color = 'primary', variant = false, ...rest} = props;
+  const {title, data, loading = false, color = 'primary', variant = false, limit, ...rest} = props;
 
   const classes = useStyles();
+
+  const dataWithLimit = () => {
+    if (!data || !Array.isArray(data)) return [];
+
+    if (limit && Number.isInteger(limit) && limit > 0) {
+      return data.slice(0, limit);
+    }
+    return data;
+  };
 
   return (
       <Box
@@ -72,7 +81,7 @@ export default function NewsFrontPage(props) {
           }
           <Box p={4} display={"flex"} alignItems={"center"} justifyContent={'center'} flex={1}>
             <Grid container spacing={2} alignItems={"center"} justify={'center'} className={classes.gridContainer}>
-              {data && Array.isArray(data) && data.slice(0, 3).flatMap((item, ind) => {
+              {dataWithLimit().flatMap((item, ind) => {
                 return (
                     <Grid item key={ind}>
                       <FeedCard

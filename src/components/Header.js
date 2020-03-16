@@ -10,8 +10,8 @@ import MuiLink from "./utility/MuiLink";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import {Link} from "gatsby";
-import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -71,14 +71,12 @@ export default function Header(props) {
       <header {...rest}>
         <AppBar position='fixed' className={classes.appBar}>
           <Toolbar>
-            <Grid container alignItems={"stretch"}>
-              <Grid item md={2} xs={6}>
-                <MuiLink to={'/'} className={classes.iconContainer}>
-                  <IconButton><img src={COVIDIcon} alt={'COVID-icon'} className={classes.icon}/></IconButton>
-                </MuiLink>
-              </Grid>
-              <Hidden smDown initialWidth={'lg'}>
-                <Grid item md={8} xs={6} container justify={"center"}>
+            <Box display={"flex"} justifyContent={'space-between'} alignItems={"stretch"} flexWrap={"nowrap"} flex={1} maxWidth={"100%"}>
+              <MuiLink to={'/'} className={classes.iconContainer}>
+                <IconButton><img src={COVIDIcon} alt={'COVID-icon'} className={classes.icon}/></IconButton>
+              </MuiLink>
+              <Hidden mdDown initialWidth={'xs'}>
+                <Box display={"flex"} alignItems={"center"} justifyContent={"center"} flex={1}>
                   <Tabs
                       className={classes.tabs}
                       variant="scrollable"
@@ -102,23 +100,23 @@ export default function Header(props) {
                       )
                     })}
                   </Tabs>
-                </Grid>
+                </Box>
               </Hidden>
-              <Grid item container md={2} xs={6} justify={"flex-end"} alignItems={"center"}>
-                <Hidden smDown initialWidth={'lg'}>
+              <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                <Hidden mdDown initialWidth={'lg'}>
                   {contact &&
                   <Button variant='contained' color={"secondary"} className={classes.contactButton}
                           onClick={onContactClick}>{contact}</Button>
                   }
                 </Hidden>
-                <Hidden mdUp initialWidth={'lg'}>
+                <Hidden lgUp initialWidth={'lg'}>
                   <Button variant='outlined' color={"secondary"} className={classes.contactButton}
                           onClick={onMobileMenuClick}>
                     <Menu/>
                   </Button>
                 </Hidden>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </Toolbar>
         </AppBar>
       </header>
