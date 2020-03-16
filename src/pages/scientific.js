@@ -12,7 +12,7 @@ const Scientific = ({data}) => {
 
   return (
       <>
-        <SEO title="Επιστημονικη γνώμη"/>
+        <SEO title="Επιστημονική γνώμη"/>
         <Box>
           <Hero
               title={pageData.title}

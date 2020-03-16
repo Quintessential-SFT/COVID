@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Instructions(props) {
-  const {title, description, source, variant = false, ...rest} = props;
+  const {title, description, source, ...rest} = props;
 
   const classes = useStyles();
 

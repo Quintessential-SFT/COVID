@@ -30,7 +30,7 @@ export default function Footer(props) {
         <Box p={3} display='flex' justifyContent="center" alignItems="center" flexDirection={'column'} className={classes.root}>
           <MuiLink href='https://quintessential.gr' variant="body1" color='inherit'
                 className={classes.quint}>
-            <img src={FooterImage} alt={'COVID-footer-image'} className={classes.image}/>
+            <img src={FooterImage} alt={'COVID-footer'} className={classes.image}/>
           </MuiLink>
           <MuiLink href='https://github.com/Quintessential-SFT/COVID' variant="body1" color='inherit'
                 className={classes.fork}>

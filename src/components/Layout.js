@@ -15,7 +15,7 @@ const headerTabs = [
   {uri: '/', tab: 'Τελευταία νέα'},
   {uri: '/government', tab: 'Κυβερνητικές αποφάσεις'},
   {uri: '/mythbusters', tab: 'Αλήθειες και μύθοι'},
-  {uri: '/scientific', tab: 'Επιστημονικη γνώμη'},
+  {uri: '/scientific', tab: 'Επιστημονική γνώμη'},
   {uri: '/work-from-home', tab: 'Δουλειά από το σπίτι'},
 ];
 const headerContact = 'Έκτακτη ανάγκη';

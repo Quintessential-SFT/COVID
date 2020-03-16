@@ -9,7 +9,6 @@ import Video from "./Video";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minHeight: `calc(100vh - ${headerHeight}px)`,
     display: 'flex',
     alignItems: 'center',
     backgroundColor: '#122787'
@@ -18,7 +17,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.common.white
   },
   container: {
-    minHeight: `calc(100vh - ${headerHeight}px)`,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'

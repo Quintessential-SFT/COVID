@@ -1,7 +1,6 @@
 import React from "react"
 import SEO from "../components/utility/SEO"
 import Box from "@material-ui/core/Box";
-import FactImg from "../images/COVID-fact.png";
 import Hero from "../components/Hero";
 import Fact from "../components/Fact";
 import {graphql} from "gatsby";
