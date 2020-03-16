@@ -12,7 +12,7 @@ import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: 354,
+    maxWidth: 354,
     borderRadius: 0
   },
   media: {
