@@ -8,7 +8,6 @@
     "axios": "^0.19.2",
     "clsx": "^1.0.4",
     "dotenv": "^8.2.0",
-    "formik": "^2.1.3",
     "gatsby": "latest",
     "gatsby-image": "^2.2.40",
     "gatsby-plugin-google-analytics": "^2.1.37",
@@ -29,8 +28,7 @@
     "react-helmet": "latest",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "xml2js": "^0.4.23"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "develop": "gatsby develop",
