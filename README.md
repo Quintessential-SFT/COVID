@@ -13,6 +13,8 @@ This [Gatsby](https://www.gatsbyjs.org/) Website was made with [Material-UI](htt
 
 The main page Live data are fetched using the [Covid-19-API](https://github.com/Quintessential-SFT/Covid-19-API), while the News Feed sections are getting data from RSS feeds.
 
+<em>Designed and Developed in 48 hours.</em> 
+
 ### How to run:
 
 - Clone this repo
