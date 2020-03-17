@@ -37,6 +37,20 @@
             "icon": "content_copy",
             "display": "list",
             "non-repeat": {
+              "cardsection_category": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Εργασία στο σπίτι",
+                    "Ταινίες & Σειρές",
+                    "Podcasts",
+                    "Ελεύθερος χρόνος"
+                  ],
+                  "default_value": "Εργασία στο σπίτι",
+                  "label": "CardSection Category",
+                  "placeholder": "CardSection Category"
+                }
+              },
               "cardsection_title": {
                 "type": "Text",
                 "config": {

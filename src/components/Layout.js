@@ -16,7 +16,7 @@ const headerTabs = [
   {uri: '/government', tab: 'Κυβερνητικές αποφάσεις'},
   {uri: '/mythbusters', tab: 'Αλήθειες και μύθοι'},
   {uri: '/scientific', tab: 'Επιστημονική γνώμη'},
-  {uri: '/work-from-home', tab: 'Δουλειά από το σπίτι'},
+  {uri: '/menoume-spiti', tab: 'Μένουμε σπίτι'},
 ];
 const headerContact = 'Έκτακτη ανάγκη';
 
@@ -35,7 +35,7 @@ const Layout = ({children, uri}) => {
           return 2;
         case 'scientific':
           return 3;
-        case 'work-from-home':
+        case 'menoume-spiti':
           return 4;
         default:
           return 0;
