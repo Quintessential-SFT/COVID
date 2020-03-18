@@ -100,9 +100,6 @@ module.exports = {
         mergeSecurityHeaders: false,
         headers: {
           "/*": [
-            "X-Frame-Options: sameorigin",
-          ],
-          "/live-data/": [
             "X-Frame-Options: allowall",
           ],
         },
