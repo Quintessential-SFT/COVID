@@ -98,7 +98,7 @@ export default function LiveDataSection(props) {
           </Grid>
           <Grid item xs={6}>
             <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-              <Typography noWrap variant={"body2"}>Θάνατοι</Typography>
+              <Typography noWrap variant={"body2"}>Απώλειες</Typography>
               <Typography variant={"h6"}>{deaths ? deaths : "-"}</Typography>
             </Box>
           </Grid>
