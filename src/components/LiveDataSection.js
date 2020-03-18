@@ -113,12 +113,12 @@ export default function LiveDataSection(props) {
                         className={classes.source}>Πηγή: <MuiLink href={"https://coronavirus.jhu.edu/"}>Johns
               Hopkins</MuiLink></Typography>
           </Grid>
-          <Grid item xs={12}>
-            <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}
-                    onClick={() => setOpenEmbed(true)}>
-              Επισύναψη στο site σου
-            </Button>
-          </Grid>
+          {/*<Grid item xs={12}>*/}
+          {/*  <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}*/}
+          {/*          onClick={() => setOpenEmbed(true)}>*/}
+          {/*    Επισύναψη στο site σου*/}
+          {/*  </Button>*/}
+          {/*</Grid>*/}
         </Grid>
       </Paper>
 
