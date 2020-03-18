@@ -3,9 +3,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
-import MuiLink from "./utility/MuiLink";
+import LiveDataSection from "./LiveDataSection";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,53 +43,25 @@ export default function NewsTop(props) {
   const classes = useStyles();
 
   return (
-      <Container maxWidth={"lg"} className={classes.root} {...rest}>
-        <Grid container alignItems={"center"}>
-          <Grid item md={6} xs={12} className={classes.container}>
-            <Box p={2}>
-              <Typography gutterBottom variant="h4" component="h2">
-                {title}
-              </Typography>
-              <Typography variant="body1" color="textSecondary" component="p">
-                {description}
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <Box p={2}>
-              <Paper className={classes.paper}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} container alignItems={"center"} className={classes.titleContainer}>
-                    <Box className={classes.dot}/>
-                    <Typography variant={"body1"}>Live στατιστικά, Ελλάδα</Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography noWrap variant={"body2"}>Σύνολο κρουσμάτων</Typography>
-                      <Typography variant={"h6"}>{totalCases ? totalCases : '-'}</Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography noWrap variant={"body2"}>Αναρρώσεις</Typography>
-                      <Typography variant={"h6"}>{recoveredCases ? recoveredCases : '-'}</Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>
-                      <Typography noWrap variant={"body2"}>Θάνατοι</Typography>
-                      <Typography variant={"h6"}>{deaths ? deaths : "-"}</Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={12} container justify={"flex-end"}>
-                    <Typography noWrap variant={"body2"} color="textSecondary" className={classes.source}>Πηγή: <MuiLink href={"https://coronavirus.jhu.edu/"}>Johns Hopkins</MuiLink></Typography>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </Box>
-          </Grid>
+    <Container maxWidth={"lg"} className={classes.root} {...rest}>
+      <Grid container alignItems={"center"}>
+        <Grid item md={6} xs={12} className={classes.container}>
+          <Box p={2}>
+            <Typography gutterBottom variant="h4" component="h2">
+              {title}
+            </Typography>
+            <Typography variant="body1" color="textSecondary" component="p">
+              {description}
+            </Typography>
+          </Box>
         </Grid>
-      </Container>
+        <Grid item md={6} xs={12}>
+          <Box p={2}>
+            <LiveDataSection totalCases={totalCases} recoveredCases={recoveredCases} deaths={deaths}/>
+          </Box>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
