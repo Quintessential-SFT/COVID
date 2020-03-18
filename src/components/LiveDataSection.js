@@ -97,6 +97,17 @@ export default function LiveDataSection(props) {
     setCopySuccess('Copied!');
   };
 
+  const copyButtonComponent = () => {
+    if (typeof window === 'undefined' || !document || !document.queryCommandSupported('copy')) {
+      return null;
+    }
+    return (
+      <ButtonBase onClick={copyEmbedCode}>
+        <img src={EmbedCopyButton} alt={'embed-copy-button'}/>
+      </ButtonBase>
+    )
+  };
+
   return (
     <>
       <Paper className={classes.paper} {...rest}>
@@ -134,14 +145,12 @@ export default function LiveDataSection(props) {
                         className={classes.source}>Πηγή: <MuiLink href={"https://coronavirus.jhu.edu/"}>Johns
               Hopkins</MuiLink></Typography>
           </Grid>
-          {document.queryCommandSupported('copy') &&
-            <Grid item xs={12}>
-              <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}
-                      onClick={() => setOpenEmbed(true)}>
-                Επισύναψη στο site σου
-              </Button>
-            </Grid>
-          }
+          <Grid item xs={12}>
+            <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}
+                    onClick={() => setOpenEmbed(true)}>
+              Επισύναψη στο site σου
+            </Button>
+          </Grid>
         </Grid>
       </Paper>
 
@@ -151,7 +160,8 @@ export default function LiveDataSection(props) {
         onClose={() => setOpenEmbed(false)}
         aria-labelledby="embed-dialog-title"
         aria-describedby="embed-dialog-description">
-        <DialogTitle id="embed-dialog-title">{"Χρησιμοποιείστε την κάρτα των Live στατιστικών στο site σας"}</DialogTitle>
+        <DialogTitle
+          id="embed-dialog-title">{"Χρησιμοποιείστε την κάρτα των Live στατιστικών στο site σας"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description" variant={'h5'} color={'textPrimary'}>
             Οδηγίες χρήσης:
@@ -159,9 +169,7 @@ export default function LiveDataSection(props) {
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <img src={EmbedInstructions} alt={'embed-instructions'} className={classes.instructions}/>
-              <ButtonBase onClick={copyEmbedCode}>
-                <img src={EmbedCopyButton} alt={'embed-copy-button'}/>
-              </ButtonBase>
+              {copyButtonComponent()}
             </Grid>
             <Grid item xs={12} md={6}>
               <Paper className={classes.codeContainer}>
