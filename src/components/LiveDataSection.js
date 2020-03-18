@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -14,6 +14,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import EmbedInstructions from "../images/LIVEDATA-embed-instructions.svg";
 import EmbedCopyButton from "../images/LIVEDATA-embed-copy-button.svg";
+import Input from "@material-ui/core/Input";
+import Grow from "@material-ui/core/Grow";
+import clsx from "clsx";
 
 
 const useStyles = makeStyles(theme => ({
@@ -38,8 +41,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
   },
-  madeBy: {
-    fontSize: 12,
+  blueColor: {
     color: '#6C63FF'
   },
   source: {
@@ -67,13 +69,32 @@ export default function LiveDataSection(props) {
   const {totalCases, recoveredCases, deaths, ...rest} = props;
 
   const [openEmbed, setOpenEmbed] = useState(false);
+  const [copySuccess, setCopySuccess] = useState('');
+  const [showCopyMessage, setShowCopyMessage] = React.useState(false);
+
+  const embedCodeTextArea = useRef(null);
 
   const classes = useStyles();
 
-  const copyEmbedCode = () => {
-    if (navigator) {
-      navigator.clipboard.writeText(embedCode)
+  useEffect(() => {
+    if (copySuccess) {
+      setCopySuccess('');
+      if (!showCopyMessage) {
+        setShowCopyMessage(true);
+        const timeout = setTimeout(() => {
+          setShowCopyMessage(false);
+          clearTimeout(timeout);
+        }, 6000)
+      }
     }
+  }, [copySuccess]);
+
+  const copyEmbedCode = () => {
+    if (!embedCodeTextArea.current) return;
+    embedCodeTextArea.current.select();
+    document.execCommand('copy');
+    embedCodeTextArea.current.selectionStart = embedCodeTextArea.current.selectionEnd;
+    setCopySuccess('Copied!');
   };
 
   return (
@@ -104,7 +125,7 @@ export default function LiveDataSection(props) {
           </Grid>
           <Grid item xs={6} container justify={"flex-start"}>
             <Typography noWrap variant={"body2"} color="inherit"
-                        className={classes.madeBy}>
+                        className={clsx(classes.source, classes.blueColor)}>
               By: <MuiLink href={"https://www.quintessential.gr/"}>Quintessential SFT</MuiLink>
             </Typography>
           </Grid>
@@ -113,12 +134,14 @@ export default function LiveDataSection(props) {
                         className={classes.source}>Πηγή: <MuiLink href={"https://coronavirus.jhu.edu/"}>Johns
               Hopkins</MuiLink></Typography>
           </Grid>
-          <Grid item xs={12}>
-            <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}
-                    onClick={() => setOpenEmbed(true)}>
-              Επισύναψη στο site σου
-            </Button>
-          </Grid>
+          {document.queryCommandSupported('copy') &&
+            <Grid item xs={12}>
+              <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}
+                      onClick={() => setOpenEmbed(true)}>
+                Επισύναψη στο site σου
+              </Button>
+            </Grid>
+          }
         </Grid>
       </Paper>
 
@@ -142,12 +165,16 @@ export default function LiveDataSection(props) {
             </Grid>
             <Grid item xs={12} md={6}>
               <Paper className={classes.codeContainer}>
-                <Typography variant={"body2"} color={'textPrimary'}>
-                  {embedCode}
-                </Typography>
+                <Input inputRef={embedCodeTextArea} disableUnderline multiline fullWidth readOnly value={embedCode}/>
               </Paper>
             </Grid>
           </Grid>
+          <Grow in={showCopyMessage} timeout={600}>
+            <Typography noWrap variant={"body2"} color="inherit"
+                        className={classes.blueColor}>
+              Αντιγράφηκε!
+            </Typography>
+          </Grow>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setOpenEmbed(false)}
