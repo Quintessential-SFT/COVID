@@ -1,4 +1,4 @@
 /*
     X-Frame-Options: DENY
 /live-data/
-    X-Frame-Options: SAMEORIGIN
+    X-Frame-Options: ALLOWALL
