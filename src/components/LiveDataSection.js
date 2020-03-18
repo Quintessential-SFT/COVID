@@ -102,9 +102,17 @@ export default function LiveDataSection(props) {
       return null;
     }
     return (
-      <ButtonBase onClick={copyEmbedCode}>
-        <img src={EmbedCopyButton} alt={'embed-copy-button'}/>
-      </ButtonBase>
+      <>
+        <ButtonBase onClick={copyEmbedCode}>
+          <img src={EmbedCopyButton} alt={'embed-copy-button'}/>
+        </ButtonBase>
+        <Grow in={showCopyMessage} timeout={600}>
+          <Typography noWrap variant={"body2"} color="inherit"
+                      className={classes.blueColor}>
+            Αντιγράφηκε!
+          </Typography>
+        </Grow>
+      </>
     )
   };
 
@@ -177,12 +185,6 @@ export default function LiveDataSection(props) {
               </Paper>
             </Grid>
           </Grid>
-          <Grow in={showCopyMessage} timeout={600}>
-            <Typography noWrap variant={"body2"} color="inherit"
-                        className={classes.blueColor}>
-              Αντιγράφηκε!
-            </Typography>
-          </Grow>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setOpenEmbed(false)}
