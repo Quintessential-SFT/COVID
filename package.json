@@ -22,6 +22,7 @@
     "gatsby-source-prismic": "^3.0.0",
     "gatsby-transformer-sharp": "^2.3.13",
     "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "latest",
     "react-dom": "latest",
