@@ -40,9 +40,13 @@ export default function CovidStatsChart({ data }) {
             categories: chartData.dates
         }
     };
+
     useEffect(() => {
         const chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render().catch(console.log);
+        return () => {
+            chart.destroy();
+        }
     }, []);
 
     return (
