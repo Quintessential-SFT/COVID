@@ -8,6 +8,8 @@ export const getGreekCOVIDData = () => axios.get(`${COVID_API_BASE}/data/country
 export const getCOVIDDataRange = (startDate = "01-22-2020", endDate = moment().format("MM-DD-YYYY"), countries) => {
   return axios.get(`${COVID_API_BASE}/data/range/${startDate}/${endDate}${countries ? `?countries=${countries}` : ''}`)
 };
+export const getCOVIDDataCountries = () => axios.get(`${COVID_API_BASE}/data/meta/countries`);
+
 
 export const getNewsFeed = () => axios.get(`${COVID_RSS_API_BASE}/articles`);
 export const getGovernmentNews = () => axios.get(`${COVID_RSS_API_BASE}/government/news`);

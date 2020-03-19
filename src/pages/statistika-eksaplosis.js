@@ -5,42 +5,53 @@ import Hero from "../components/Hero";
 import {graphql} from "gatsby";
 import {useDispatch, useSelector} from "react-redux";
 import {getCovidDataRange} from "../redux/thunks";
-import NewsFrontPage from "../components/NewsFrontPage";
 import moment from "moment";
 import LiveDataChartSection from "../components/LiveDataChartSection";
-import CovidStatsChart from "../components/CovidStatsChart";
+import {getCOVIDDataCountries} from "../requests";
+import {orderBy} from "lodash";
 
 const SpreadStats = ({data}) => {
-  const [countries, setCountries] = useState([]);
-  const [startDate, setStartDate] = useState(moment('01-22-2020', 'MM-DD-YYYY'));
-  const [endDate, setEndDate] = useState(moment());
+    const [countries, setCountries] = useState([]);
+    const [startDate, setStartDate] = useState(moment('01-22-2020', 'MM-DD-YYYY'));
+    const [endDate, setEndDate] = useState(moment());
+    const [allCountries, setAllCountries] = useState();
 
-  const dispatch = useDispatch();
-  const covidDataRange = useSelector(state => state.covidDataRange);
+    const dispatch = useDispatch();
+    const covidDataRange = useSelector(state => state.covidDataRange);
 
-  useEffect(() => {
-    dispatch(getCovidDataRange(startDate.format('MM-DD-YYYY'), endDate.format('MM-DD-YYYY')));
-  }, []);
+    useEffect(() => {
+        getCOVIDDataCountries()
+            .then(res => {
+                const filtered = res.data.filter(Boolean);
+                const sorted = orderBy(filtered, [filtered => filtered.charAt(0)], ['asc']);
+                setAllCountries(sorted)
+            })
+            .catch(console.log);
+    }, []);
 
-  if (!data || !data.prismicScientific) return '';
-  const {data: pageData} = data.prismicScientific;
+    useEffect(() => {
+        dispatch(getCovidDataRange(startDate.format('MM-DD-YYYY'), endDate.format('MM-DD-YYYY'), countries));
+    }, [startDate, endDate, countries]);
 
-  const covidChartData = covidDataRange && covidDataRange.data;
+    if (!data || !data.prismicScientific) return '';
+    const {data: pageData} = data.prismicScientific;
 
-  return (
-      <>
-        <SEO title="Στατιστικά εξάπλωσης"/>
-        <Box>
-          <Hero
-              title={pageData.title}
-              description={pageData.description}
-              image={pageData.image ? pageData.image.url : null}
-          />
-          <LiveDataChartSection data={covidDataRange.data} countries={countries} setCountries={setCountries}/>
-          { covidChartData &&  Array.isArray(covidChartData) && <CovidStatsChart data={covidChartData} /> }
-        </Box>
-      </>
-  )
+    return (
+        <>
+            <SEO title="Στατιστικά εξάπλωσης"/>
+            <Box>
+                <Hero
+                    title={pageData.title}
+                    description={pageData.description}
+                    image={pageData.image ? pageData.image.url : null}
+                />
+                <LiveDataChartSection data={covidDataRange.data} allCountries={allCountries} countries={countries}
+                                      setCountries={setCountries}
+                                      startDate={startDate} setStartDate={setStartDate}
+                                      endDate={endDate} setEndDate={setEndDate}/>
+            </Box>
+        </>
+    )
 };
 
 export default SpreadStats

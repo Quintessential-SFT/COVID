@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -9,124 +9,147 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
-import {Flag, FlagOutlined} from "@material-ui/icons";
+import {FlagOutlined} from "@material-ui/icons";
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+import MomentUtils from "@date-io/moment";
+import moment from "moment";
+import IconButton from "@material-ui/core/IconButton";
+import {Container} from "@material-ui/core";
+import CovidStatsChart from "./CovidStatsChart";
 
 
 const useStyles = makeStyles(theme => ({
-  paper: {
-    padding: theme.spacing(3)
-  },
-  formControl: {
-
-  },
-  input: {
-    "& .MuiSelect-select:focus": {
-      backgroundColor: 'initial'
+    paper: {
+        padding: theme.spacing(3)
+    },
+    formControl: {},
+    input: {
+        "& .MuiSelect-select:focus": {
+            backgroundColor: 'initial'
+        }
+    },
+    gridContainer: {
+        paddingBottom: theme.spacing(2),
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
     }
-  }
 }));
 
-const allCountries = ['greece', 'italy', 'albania'];
-
 export default function LiveDataRangeChartSection(props) {
-  const {data, countries, setCountries, startDate, setStartDate, endDate, setEndDate, ...rest} = props;
+    const {data, allCountries, countries, setCountries, startDate, setStartDate, endDate, setEndDate, ...rest} = props;
 
-  const classes = useStyles();
+    const [countrySelectOpen, setCountrySelectOpen] = useState(false);
 
-  const handleChange = event => {
-    console.log(event.target.value);
-    if (setCountries) {
-      setCountries(event.target.value);
-    }
-  };
+    const classes = useStyles();
 
-  return (
-    <>
-      <Paper className={classes.paper} {...rest}>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <FormControl color={"secondary"} variant="filled" className={classes.formControl} fullWidth>
-              <InputLabel id="demo-mutiple-checkbox-label">Countries</InputLabel>
-              <Select
-                labelId="demo-mutiple-checkbox-label"
-                id="demo-mutiple-checkbox"
-                multiple
-                displayEmpty
-                value={countries ? countries : []}
-                onChange={handleChange}
-                input={<Input startAdornment={<FlagOutlined/>} className={classes.input}/>}
-                renderValue={selected => {
-                  if (selected.length === 0) {
-                    return <em>All</em>;
-                  }
+    const handleChange = event => {
+        if (setCountries) {
+            setCountries(event.target.value);
+        }
+    };
 
-                  return selected.join(', ');
-                }}
-              >
-                {allCountries && allCountries.map(country => (
-                  <MenuItem key={country} value={country}>
-                    <Checkbox checked={countries && countries.indexOf(country) > -1} />
-                    <ListItemText primary={country} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={2} />
-          <Grid item xs={3}>
+    const handleStartDateChange = date => {
+        if (setStartDate) {
+            setStartDate(moment(date));
+        }
+    };
 
-          </Grid>
-          <Grid item xs={3}>
+    const handleEndDateChange = date => {
+        if (setEndDate) {
+            setEndDate(moment(date));
+        }
+    };
 
-          </Grid>
+    return (
+        <>
+            <Paper className={classes.paper} {...rest}>
+                <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <Container maxWidth={'lg'}>
+                        <Grid container spacing={2} className={classes.gridContainer}>
+                            <Grid item md={3} xs={12}>
+                                <FormControl color={"secondary"} className={classes.formControl} fullWidth
+                                             margin={"normal"}>
+                                    <InputLabel id="country-multiple-checkbox-label">Countries</InputLabel>
+                                    <Select
+                                        labelId="country-multiple-checkbox-label"
+                                        id="country-multiple-checkbox"
+                                        multiple
+                                        displayEmpty
+                                        onOpen={() => setCountrySelectOpen(true)}
+                                        onClose={() => setCountrySelectOpen(false)}
+                                        open={countrySelectOpen}
+                                        startAdornment={<IconButton size={'small'}
+                                                                    onClick={() => setCountrySelectOpen(true)}><FlagOutlined/></IconButton>}
+                                        value={countries ? countries : []}
+                                        onChange={handleChange}
+                                        input={<Input className={classes.input}/>}
+                                        renderValue={selected => {
+                                            if (selected.length === 0) {
+                                                return 'All';
+                                            }
 
-        </Grid>
-
-
-        {/*<Grid container spacing={2}>*/}
-        {/*  <Grid item xs={12} container alignItems={"center"} className={classes.titleContainer}>*/}
-        {/*    <Box className={classes.dot}/>*/}
-        {/*    <Typography variant={"body1"}>Live στατιστικά, Ελλάδα</Typography>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid item xs={12}>*/}
-        {/*    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>*/}
-        {/*      <Typography noWrap variant={"body2"}>Σύνολο κρουσμάτων</Typography>*/}
-        {/*      <Typography variant={"h6"}>{totalCases ? totalCases : '-'}</Typography>*/}
-        {/*    </Box>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid item xs={6}>*/}
-        {/*    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>*/}
-        {/*      <Typography noWrap variant={"body2"}>Αναρρώσεις</Typography>*/}
-        {/*      <Typography variant={"h6"}>{recoveredCases ? recoveredCases : '-'}</Typography>*/}
-        {/*    </Box>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid item xs={6}>*/}
-        {/*    <Box display={"flex"} flexDirection={"column"} className={classes.borderBox}>*/}
-        {/*      <Typography noWrap variant={"body2"}>Απώλειες</Typography>*/}
-        {/*      <Typography variant={"h6"}>{deaths ? deaths : "-"}</Typography>*/}
-        {/*    </Box>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid item xs={6} container justify={"flex-start"}>*/}
-        {/*    <Typography noWrap variant={"body2"} color="inherit"*/}
-        {/*                className={clsx(classes.source, classes.blueColor)}>*/}
-        {/*      By: <MuiLink href={"https://www.quintessential.gr/"}>Quintessential SFT</MuiLink>*/}
-        {/*    </Typography>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid item xs={6} container justify={"flex-end"}>*/}
-        {/*    <Typography noWrap variant={"body2"} color="textSecondary"*/}
-        {/*                className={classes.source}>Πηγή: <MuiLink href={"https://coronavirus.jhu.edu/"}>Johns*/}
-        {/*      Hopkins</MuiLink></Typography>*/}
-        {/*  </Grid>*/}
-        {/*  <Grid item xs={12}>*/}
-        {/*    <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}*/}
-        {/*            onClick={() => setOpenEmbed(true)}>*/}
-        {/*      Επισύναψη στο site σου*/}
-        {/*    </Button>*/}
-        {/*  </Grid>*/}
-        {/*</Grid>*/}
-
-      </Paper>
-    </>
-  );
+                                            return selected.join(', ');
+                                        }}
+                                    >
+                                        {allCountries && allCountries.map(country => (
+                                            <MenuItem key={country} value={country}>
+                                                <Checkbox checked={countries && countries.indexOf(country) > -1}/>
+                                                <ListItemText primary={country}/>
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item md={3} xs={12} style={{padding: 0}}/>
+                            <Grid item md={3} xs={6}>
+                                <KeyboardDatePicker
+                                    disableToolbar
+                                    fullWidth
+                                    variant="inline"
+                                    color={'secondary'}
+                                    format="DD/MM/YYYY"
+                                    margin="normal"
+                                    id="start-date-picker"
+                                    label="Start Date"
+                                    value={startDate ? startDate.toDate() : null}
+                                    minDate={moment('01-22-2020', 'MM-DD-YYYY').toDate()}
+                                    maxDate={endDate ? endDate.toDate() : undefined}
+                                    onChange={handleStartDateChange}
+                                    KeyboardButtonProps={{
+                                        'aria-label': 'change start date',
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item md={3} xs={6}>
+                                <KeyboardDatePicker
+                                    disableToolbar
+                                    fullWidth
+                                    variant="inline"
+                                    color={'secondary'}
+                                    format="DD/MM/YYYY"
+                                    margin="normal"
+                                    id="end-date-picker"
+                                    label="End Date"
+                                    value={endDate ? endDate.toDate() : null}
+                                    minDate={startDate ? startDate.toDate() : undefined}
+                                    disableFuture
+                                    onChange={handleEndDateChange}
+                                    KeyboardButtonProps={{
+                                        'aria-label': 'change end date',
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+                        {data && Array.isArray(data) &&
+                        <CovidStatsChart data={data}/>
+                        }
+                    </Container>
+                </MuiPickersUtilsProvider>
+            </Paper>
+        </>
+    );
 }
 
