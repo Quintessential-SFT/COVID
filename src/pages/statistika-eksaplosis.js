@@ -8,6 +8,7 @@ import {getCovidDataRange} from "../redux/thunks";
 import NewsFrontPage from "../components/NewsFrontPage";
 import moment from "moment";
 import LiveDataChartSection from "../components/LiveDataChartSection";
+import CovidStatsChart from "../components/CovidStatsChart";
 
 const SpreadStats = ({data}) => {
   const [countries, setCountries] = useState([]);
@@ -24,7 +25,7 @@ const SpreadStats = ({data}) => {
   if (!data || !data.prismicScientific) return '';
   const {data: pageData} = data.prismicScientific;
 
-  console.log(covidDataRange);
+  const covidChartData = covidDataRange && covidDataRange.data;
 
   return (
       <>
@@ -36,6 +37,7 @@ const SpreadStats = ({data}) => {
               image={pageData.image ? pageData.image.url : null}
           />
           <LiveDataChartSection data={covidDataRange.data} countries={countries} setCountries={setCountries}/>
+          { covidChartData &&  Array.isArray(covidChartData) && <CovidStatsChart data={covidChartData} /> }
         </Box>
       </>
   )
