@@ -1,46 +1,32 @@
-import React, {useEffect, useRef} from 'react';
-import ApexCharts from 'apexcharts';
-import Box from "@material-ui/core/Box";
-import {useTheme} from "@material-ui/core";
+import React from 'react';
+import loadable from '@loadable/component'
 
-export default function StatsAreaChart({data}) {
-    const chartRef = useRef();
-    const theme = useTheme();
+const Chart = loadable(() => import('react-apexcharts'));
 
-    const chartData = data.reduce((accumulator, value) => {
+const formatData = (rawData) => {
+    const reduced = rawData.reduce((accumulator, value) => {
         accumulator.confirmed.push(value.confirmed);
         accumulator.recovered.push(value.recovered);
         accumulator.deaths.push(value.deaths);
         accumulator.dates.push(value.date);
         return accumulator;
     }, {confirmed: [], recovered: [], deaths: [], dates: []});
+    return reduced;
+};
+
+export default function StatsAreaChart({data}) {
+    const chartData = formatData(data);
 
     const options = {
-        series: [
-            {
-                name: 'Σύνολο κρουσμάτων',
-                data: chartData.confirmed
-            },
-            {
-                name: 'Αναρρώσεις',
-                data: chartData.recovered
-            },
-            {
-                name: 'Απώλειες',
-                data: chartData.deaths
-            }
-        ],
         colors: ['#FF0000', '#00FF00', '#000000'],
         fill: {
+            type: 'gradient',
             gradient: {
                 opacityFrom: 0.8,
                 opacityTo: 0,
-            },
+            }
         },
         chart: {
-            height: 480,
-            type: 'area',
-            fontFamily: theme.typography.body1.fontFamily,
             toolbar: {
                 tools: {
                     download: false,
@@ -59,16 +45,23 @@ export default function StatsAreaChart({data}) {
         },
     };
 
-    useEffect(() => {
-        if (!chartRef || !chartRef.current) return;
-        const chart = new ApexCharts(chartRef.current, options);
-        chart.render().catch(console.log);
-        return () => {
-            chart.destroy();
-        }
-    }, [data]);
+    const series = [
+            {
+                name: 'Σύνολο κρουσμάτων',
+                data: chartData.confirmed
+            },
+            {
+                name: 'Αναρρώσεις',
+                data: chartData.recovered
+            },
+            {
+                name: 'Απώλειες',
+                data: chartData.deaths
+            }
+        ];
 
     return (
-        <Box ref={chartRef}/>
+        <Chart options={options} series={series}
+               height={'480px'} type={'area'}/>
     )
 };
