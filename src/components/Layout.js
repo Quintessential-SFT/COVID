@@ -15,7 +15,7 @@ const headerTabs = [
   {uri: '/', tab: 'Live νέα'},
   {uri: '/government', tab: 'Αποφάσεις'},
   {uri: '/mythbusters', tab: 'Αλήθειες & μύθοι'},
-  {uri: '/statistics', tab: 'Αναλύσεις δεδομένων'},
+  {uri: '/statistics', tab: 'Στατιστικά εξάπλωσης'},
   {uri: '/menoume-spiti', tab: 'Μένουμε σπίτι'},
   {uri: '/scientific', tab: 'Επιστημονική γνώμη'},
 ];

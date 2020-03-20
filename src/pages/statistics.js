@@ -38,7 +38,7 @@ const SpreadStats = ({data}) => {
 
     return (
         <>
-            <SEO title="Αναλύσεις δεδομένων"/>
+            <SEO title="Στατιστικά εξάπλωσης"/>
             <Box>
                 <Hero
                     title={pageData.title}
