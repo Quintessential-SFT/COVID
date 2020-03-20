@@ -1,9 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import ApexCharts from 'apexcharts';
 import Box from "@material-ui/core/Box";
+import {useTheme} from "@material-ui/core";
 
-export default function CovidStatsChart({data}) {
+export default function StatsColumnChart({data}) {
     const chartRef = useRef();
+    const theme = useTheme();
 
     const chartData = data.reduce((accumulator, value) => {
         accumulator.confirmed.push(value.confirmed);
@@ -16,34 +18,46 @@ export default function CovidStatsChart({data}) {
     const options = {
         series: [
             {
-                name: 'Confirmed',
+                name: 'Σύνολο κρουσμάτων',
                 data: chartData.confirmed
             },
             {
-                name: 'Recovered',
+                name: 'Αναρρώσεις',
                 data: chartData.recovered
             },
             {
-                name: 'Deaths',
+                name: 'Απώλειες',
                 data: chartData.deaths
             }
         ],
         colors: ['#FF0000', '#00FF00', '#000000'],
         fill: {
-            gradient: {
-                opacityFrom: 0.8,
-                opacityTo: 0,
-            },
+            opacity: 1
         },
         chart: {
-            height: 500,
-            type: 'area'
+            height: 480,
+            type: 'bar',
+            fontFamily: theme.typography.body1.fontFamily,
+            toolbar: {
+                tools: {
+                    download: false,
+                },
+            },
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            },
         },
         dataLabels: {
             enabled: false
         },
         stroke: {
-            curve: 'smooth'
+            show: true,
+            width: 2,
+            colors: ['transparent']
         },
         xaxis: {
             type: 'datetime',

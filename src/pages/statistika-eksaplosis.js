@@ -9,6 +9,7 @@ import moment from "moment";
 import LiveDataChartSection from "../components/LiveDataChartSection";
 import {getCOVIDDataCountries} from "../requests";
 import {orderBy} from "lodash";
+import StatCharts from "../components/StatCharts";
 
 const SpreadStats = ({data}) => {
     const [countries, setCountries] = useState([]);
@@ -45,10 +46,12 @@ const SpreadStats = ({data}) => {
                     description={pageData.description}
                     image={pageData.image ? pageData.image.url : null}
                 />
-                <LiveDataChartSection data={covidDataRange.data} allCountries={allCountries} countries={countries}
-                                      setCountries={setCountries}
-                                      startDate={startDate} setStartDate={setStartDate}
-                                      endDate={endDate} setEndDate={setEndDate}/>
+                <StatCharts
+                    title={'Στατιστικά'}
+                    data={covidDataRange.data} allCountries={allCountries} countries={countries}
+                    setCountries={setCountries}
+                    startDate={startDate} setStartDate={setStartDate}
+                    endDate={endDate} setEndDate={setEndDate}/>
             </Box>
         </>
     )

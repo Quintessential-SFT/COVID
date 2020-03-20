@@ -18,14 +18,16 @@ import MomentUtils from "@date-io/moment";
 import moment from "moment";
 import IconButton from "@material-ui/core/IconButton";
 import {Container} from "@material-ui/core";
-import CovidStatsChart from "./CovidStatsChart";
+import StatsAreaChart from "./StatsAreaChart";
+import StatsColumnChart from "./StatsColumnChart";
+import Switch from "@material-ui/core/Switch";
+import Typography from "@material-ui/core/Typography";
 
 
 const useStyles = makeStyles(theme => ({
     paper: {
         padding: theme.spacing(3)
     },
-    formControl: {},
     input: {
         "& .MuiSelect-select:focus": {
             backgroundColor: 'initial'
@@ -35,15 +37,34 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: theme.spacing(2),
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),
-    }
+    },
+    chartContainer: {
+        padding: '0 !important',
+    },
+    switchContainer: {
+        paddingTop: '0 !important',
+        paddingBottom: '0 !important',
+        fontSize: 12,
+    },
 }));
 
 export default function LiveDataRangeChartSection(props) {
-    const {data, allCountries, countries, setCountries, startDate, setStartDate, endDate, setEndDate, ...rest} = props;
+    const {data, allCountries, countries, setCountries, startDate, setStartDate, endDate, setEndDate, children, ...rest} = props;
 
     const [countrySelectOpen, setCountrySelectOpen] = useState(false);
+    const [chartTypeColumn, setChartTypeColumn] = useState(false);
 
     const classes = useStyles();
+
+    const statsChart = (data, typeCol) => {
+        if (!data || !Array.isArray(data)) return null;
+
+        if (typeCol) {
+            return (<StatsColumnChart data={data}/>)
+        } else {
+            return (<StatsAreaChart data={data}/>);
+        }
+    };
 
     const handleChange = event => {
         if (setCountries) {
@@ -63,6 +84,10 @@ export default function LiveDataRangeChartSection(props) {
         }
     };
 
+    const handleChartTypeChange = (event) => {
+        setChartTypeColumn(event.target.checked);
+    };
+
     return (
         <>
             <Paper className={classes.paper} {...rest}>
@@ -70,9 +95,9 @@ export default function LiveDataRangeChartSection(props) {
                     <Container maxWidth={'lg'}>
                         <Grid container spacing={2} className={classes.gridContainer}>
                             <Grid item md={3} xs={12}>
-                                <FormControl color={"secondary"} className={classes.formControl} fullWidth
+                                <FormControl color={"secondary"} fullWidth
                                              margin={"normal"}>
-                                    <InputLabel id="country-multiple-checkbox-label">Countries</InputLabel>
+                                    <InputLabel id="country-multiple-checkbox-label">Επιλέξτε χώρες</InputLabel>
                                     <Select
                                         labelId="country-multiple-checkbox-label"
                                         id="country-multiple-checkbox"
@@ -81,14 +106,17 @@ export default function LiveDataRangeChartSection(props) {
                                         onOpen={() => setCountrySelectOpen(true)}
                                         onClose={() => setCountrySelectOpen(false)}
                                         open={countrySelectOpen}
-                                        startAdornment={<IconButton size={'small'}
-                                                                    onClick={() => setCountrySelectOpen(true)}><FlagOutlined/></IconButton>}
+                                        startAdornment={
+                                            <IconButton size={'small'}
+                                                        onClick={() => setCountrySelectOpen(true)}>
+                                                <FlagOutlined/>
+                                            </IconButton>}
                                         value={countries ? countries : []}
                                         onChange={handleChange}
                                         input={<Input className={classes.input}/>}
                                         renderValue={selected => {
                                             if (selected.length === 0) {
-                                                return 'All';
+                                                return 'Όλες';
                                             }
 
                                             return selected.join(', ');
@@ -113,7 +141,7 @@ export default function LiveDataRangeChartSection(props) {
                                     format="DD/MM/YYYY"
                                     margin="normal"
                                     id="start-date-picker"
-                                    label="Start Date"
+                                    label="Από"
                                     value={startDate ? startDate.toDate() : null}
                                     minDate={moment('01-22-2020', 'MM-DD-YYYY').toDate()}
                                     maxDate={endDate ? endDate.toDate() : undefined}
@@ -132,7 +160,7 @@ export default function LiveDataRangeChartSection(props) {
                                     format="DD/MM/YYYY"
                                     margin="normal"
                                     id="end-date-picker"
-                                    label="End Date"
+                                    label="Έως"
                                     value={endDate ? endDate.toDate() : null}
                                     minDate={startDate ? startDate.toDate() : undefined}
                                     disableFuture
@@ -142,10 +170,23 @@ export default function LiveDataRangeChartSection(props) {
                                     }}
                                 />
                             </Grid>
+                            <Grid item xs={12} className={classes.chartContainer}>
+                                {statsChart(data, chartTypeColumn)}
+                            </Grid>
+                            <Grid item container xs={12} justify={'flex-end'} className={classes.switchContainer}>
+                                <Typography component="div" variant={'inherit'}>
+                                    <Grid component="label" container alignItems="center">
+                                        <Grid item>Area</Grid>
+                                        <Grid item>
+                                            <Switch size={'small'} checked={chartTypeColumn}
+                                                    onChange={handleChartTypeChange}
+                                                    name="chartType"/>
+                                        </Grid>
+                                        <Grid item>Column</Grid>
+                                    </Grid>
+                                </Typography>
+                            </Grid>
                         </Grid>
-                        {data && Array.isArray(data) &&
-                        <CovidStatsChart data={data}/>
-                        }
                     </Container>
                 </MuiPickersUtilsProvider>
             </Paper>
