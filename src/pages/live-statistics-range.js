@@ -6,7 +6,7 @@ import moment from "moment";
 import {getCOVIDDataCountries} from "../requests";
 import {orderBy} from "lodash";
 
-const LiveData = () => {
+const LiveStatisticsRange = () => {
     const [countries, setCountries] = useState([]);
     const [startDate, setStartDate] = useState(moment('01-22-2020', 'MM-DD-YYYY'));
     const [endDate, setEndDate] = useState(moment());
@@ -37,4 +37,4 @@ const LiveData = () => {
     )
 };
 
-export default LiveData;
+export default LiveStatisticsRange;
