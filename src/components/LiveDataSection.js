@@ -5,19 +5,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "./utility/MuiLink";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import EmbedInstructions from "../images/LIVEDATA-embed-instructions.svg";
 import EmbedCopyButton from "../images/LIVEDATA-embed-copy-button.svg";
-import Input from "@material-ui/core/Input";
 import Grow from "@material-ui/core/Grow";
 import clsx from "clsx";
-
+import EmbedButtonDialog from "./EmbedButtonDialog";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -63,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const embedCode = `<iframe name="COVIDLiveData" src="https://covid.quintessential.gr/live-data" width="584" height="339" frameborder="0" scrolling="auto" class="frame-area"></iframe>`;
+const COVIDLiveDataEmbedCode = `<iframe name="COVIDLiveData" src="https://covid.quintessential.gr/live-data" width="584" height="339" frameborder="0" scrolling="auto" class="frame-area"></iframe>`;
 
 export default function LiveDataSection(props) {
   const {totalCases, recoveredCases, deaths, ...rest} = props;
@@ -102,22 +94,21 @@ export default function LiveDataSection(props) {
       return null;
     }
     return (
-      <>
-        <ButtonBase onClick={copyEmbedCode}>
-          <img src={EmbedCopyButton} alt={'embed-copy-button'}/>
-        </ButtonBase>
-        <Grow in={showCopyMessage} timeout={600}>
-          <Typography noWrap variant={"body2"} color="inherit"
-                      className={classes.blueColor}>
-            Αντιγράφηκε!
-          </Typography>
-        </Grow>
-      </>
+        <>
+          <ButtonBase onClick={copyEmbedCode}>
+            <img src={EmbedCopyButton} alt={'embed-copy-button'}/>
+          </ButtonBase>
+          <Grow in={showCopyMessage} timeout={600}>
+            <Typography noWrap variant={"body2"} color="inherit"
+                        className={classes.blueColor}>
+              Αντιγράφηκε!
+            </Typography>
+          </Grow>
+        </>
     )
   };
 
   return (
-    <>
       <Paper className={classes.paper} {...rest}>
         <Grid container spacing={2} alignItems={"center"}>
           <Grid item xs={12} container alignItems={"center"} className={classes.titleContainer}>
@@ -154,46 +145,10 @@ export default function LiveDataSection(props) {
               Hopkins</MuiLink></Typography>
           </Grid>
           <Grid item xs={12}>
-            <Button color={'secondary'} variant={'contained'} fullWidth className={classes.textTransformNone}
-                    onClick={() => setOpenEmbed(true)}>
-              Επισύναψη στο site σου
-            </Button>
+            <EmbedButtonDialog embedCode={COVIDLiveDataEmbedCode}/>
           </Grid>
         </Grid>
       </Paper>
-
-      <Dialog
-        maxWidth={'md'}
-        open={openEmbed}
-        onClose={() => setOpenEmbed(false)}
-        aria-labelledby="embed-dialog-title"
-        aria-describedby="embed-dialog-description">
-        <DialogTitle
-          id="embed-dialog-title">{"Χρησιμοποιείστε την κάρτα των Live στατιστικών στο site σας"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description" variant={'h5'} color={'textPrimary'}>
-            Οδηγίες χρήσης:
-          </DialogContentText>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <img src={EmbedInstructions} alt={'embed-instructions'} className={classes.instructions}/>
-              {copyButtonComponent()}
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Paper className={classes.codeContainer}>
-                <Input inputRef={embedCodeTextArea} disableUnderline multiline fullWidth readOnly value={embedCode}/>
-              </Paper>
-            </Grid>
-          </Grid>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpenEmbed(false)}
-                  color="secondary" variant={'contained'} className={classes.textTransformNone} autoFocus>
-            Κλείσιμο
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
   );
 }
 
