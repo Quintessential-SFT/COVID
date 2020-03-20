@@ -91,6 +91,7 @@ module.exports = {
           mythbusters: require('./src/schemas/mythbusters'),
           work_from_home: require('./src/schemas/work-from-home'),
           scientific: require('./src/schemas/scientific'),
+          statistics: require('./src/schemas/statistics'),
         }
       },
     },

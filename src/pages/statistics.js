@@ -6,7 +6,6 @@ import {graphql} from "gatsby";
 import {useDispatch, useSelector} from "react-redux";
 import {getCovidDataRange} from "../redux/thunks";
 import moment from "moment";
-import LiveDataChartSection from "../components/LiveDataChartSection";
 import {getCOVIDDataCountries} from "../requests";
 import {orderBy} from "lodash";
 import StatCharts from "../components/StatCharts";
@@ -34,12 +33,12 @@ const SpreadStats = ({data}) => {
         dispatch(getCovidDataRange(startDate.format('MM-DD-YYYY'), endDate.format('MM-DD-YYYY'), countries));
     }, [startDate, endDate, countries]);
 
-    if (!data || !data.prismicScientific) return '';
-    const {data: pageData} = data.prismicScientific;
+    if (!data || !data.prismicStatistics) return '';
+    const {data: pageData} = data.prismicStatistics;
 
     return (
         <>
-            <SEO title="Στατιστικά εξάπλωσης"/>
+            <SEO title="Αναλύσεις δεδομένων"/>
             <Box>
                 <Hero
                     title={pageData.title}
@@ -61,30 +60,12 @@ export default SpreadStats
 
 export const SpreadStatsPageQuery = graphql`
     query SpreadStatsPage {
-        prismicScientific {
+        prismicStatistics {
             data {
                 title
                 description
                 image {
                     url
-                }
-                body {
-                    ... on PrismicScientificBodyCardSection {
-                        primary {
-                            cardsection_title
-                        }
-                        items {
-                            card_title
-                            card_description
-                            card_source
-                            card_url {
-                                url
-                            }
-                            card_image {
-                                url
-                            }
-                        }
-                    }
                 }
             }
         }

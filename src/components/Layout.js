@@ -12,13 +12,14 @@ import MobileMenuDrawer from "./MenuDrawer";
 export const headerHeight = 71;
 
 const headerTabs = [
-  {uri: '/', tab: 'Τελευταία νέα'},
-  {uri: '/government', tab: 'Κυβερνητικές αποφάσεις'},
-  {uri: '/mythbusters', tab: 'Αλήθειες και μύθοι'},
-  {uri: '/scientific', tab: 'Επιστημονική γνώμη'},
+  {uri: '/', tab: 'Live νέα'},
+  {uri: '/government', tab: 'Αποφάσεις'},
+  {uri: '/mythbusters', tab: 'Αλήθειες & μύθοι'},
+  {uri: '/statistics', tab: 'Αναλύσεις δεδομένων'},
   {uri: '/menoume-spiti', tab: 'Μένουμε σπίτι'},
+  {uri: '/scientific', tab: 'Επιστημονική γνώμη'},
 ];
-const headerContact = 'Έκτακτη ανάγκη';
+const headerContact = 'Έκτακτη ανάγκη;';
 
 const Layout = ({children, uri}) => {
 
@@ -33,10 +34,12 @@ const Layout = ({children, uri}) => {
           return 1;
         case 'mythbusters':
           return 2;
-        case 'scientific':
+        case 'statistics':
           return 3;
         case 'menoume-spiti':
           return 4;
+        case 'scientific':
+          return 5;
         default:
           return 0;
       }
