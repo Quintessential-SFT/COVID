@@ -12,7 +12,7 @@
     "axios": "^0.19.2",
     "clsx": "^1.0.4",
     "dotenv": "^8.2.0",
-    "gatsby": "2.32.8",
+    "gatsby": "3.0.0",
     "gatsby-image": "^2.2.40",
     "gatsby-plugin-google-analytics": "^2.1.37",
     "gatsby-plugin-manifest": "^2.2.39",
