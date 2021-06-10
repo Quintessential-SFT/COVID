@@ -8,7 +8,7 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/pickers": "^3.2.10",
-    "apexcharts": "^3.17.0",
+    "apexcharts": "^3.27.0",
     "axios": "^0.19.2",
     "clsx": "^1.0.4",
     "dotenv": "^8.2.0",
